@@ -1,0 +1,28 @@
+---
+import { ui } from '../i18n/ui';
+const { lang } = Astro.props;
+const t = ui(lang);
+---
+<section class="bg-sand py-16">
+  <div class="mx-auto max-w-6xl px-4" data-reveal>
+    <div class="text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-gold">{t.history.title}</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-brown md:text-4xl">{t.history.title}</h2>
+    </div>
+
+    <div class="mt-6 space-y-4 text-lg leading-relaxed text-brown-light">
+      {t.history.body.map((p: string) => <p class="max-w-3xl mx-auto text-center">{p}</p>)}
+    </div>
+
+    <ol class="relative mx-auto mt-12 max-w-2xl border-l-2 border-gold/40 pl-2">
+      {t.history.timeline.map((item: any) => (
+        <li class="relative mb-10 pl-6">
+          <span class="absolute -left-[11px] top-1 h-5 w-5 rounded-full border-4 border-cream bg-gold"></span>
+          <p class="text-sm font-semibold uppercase tracking-wide text-gold">{item.stage}</p>
+          <h3 class="font-serif text-xl font-bold text-brown">{item.title}</h3>
+          <p class="mt-1 text-brown-light">{item.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+import { languagesList, base } from '../i18n/ui';
+const { lang } = Astro.props;
+const labels: Record<string, string> = { km: 'ខ្មែរ', en: 'English', zh: '中文' };
+const hrefFor = (l: string) => (l === 'km' ? `${base}/` : `${base}/${l}/`);
+---
+<div class="relative">
+  <details class="relative">
+    <summary class="flex cursor-pointer list-none items-center gap-1 rounded-full border border-cream/30 px-3 py-1.5 text-sm hover:bg-brown-light">
+      {labels[lang]} <span class="text-[10px] opacity-70">▾</span>
+    </summary>
+    <div class="absolute right-0 mt-2 w-32 rounded-lg bg-brown p-1 shadow-xl">
+      {languagesList.map((l) => (
+        <a
+          href={hrefFor(l)}
+          class={`block rounded px-3 py-2 text-sm ${l === lang ? 'bg-brown-light text-gold' : 'text-cream/90 hover:bg-brown-light'}`}
+        >
+          {labels[l]}
+        </a>
+      ))}
+    </div>
+  </details>
+</div>

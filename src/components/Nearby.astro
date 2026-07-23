@@ -1,0 +1,23 @@
+---
+import { ui } from '../i18n/ui';
+const { lang } = Astro.props;
+const t = ui(lang);
+---
+<section id="nearby" class="bg-cream py-16">
+  <div class="mx-auto max-w-6xl px-4" data-reveal>
+    <div class="text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-gold">{t.nearby.title}</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-brown md:text-4xl">{t.nearby.title}</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-brown-light">{t.nearby.intro}</p>
+    </div>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {t.nearby.items.map((it: any) => (
+        <div class="rounded-2xl border border-sand-dark bg-sand p-6 shadow-sm">
+          <h3 class="font-serif text-xl font-bold text-brown">🧭 {it.title}</h3>
+          <p class="mt-2 leading-relaxed text-brown-light">{it.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

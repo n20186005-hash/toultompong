@@ -1,0 +1,119 @@
+---
+import '../styles/global.css';
+import { ui } from '../i18n/ui';
+import { siteConfig, BASE } from '../config/site';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = ui(lang);
+
+const htmlLang = lang === 'zh' ? 'zh-CN' : lang;
+const canonical = lang === 'km' ? `${BASE}/` : `${BASE}/${lang}/`;
+
+const locales = [
+  { code: 'km', href: `${BASE}/` },
+  { code: 'en', href: `${BASE}/en/` },
+  { code: 'zh', href: `${BASE}/zh/` },
+];
+
+const ogImage = `${BASE}${siteConfig.gallery[0]}`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristAttraction',
+  name: 'Toul Tompong Market (Russian Market)',
+  description: ui('en').meta.description,
+  image: ogImage,
+  url: canonical,
+  telephone: siteConfig.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Corner of St.163 and St.440',
+    addressLocality: 'Phnom Penh',
+    addressRegion: 'Phnom Penh',
+    postalCode: '12310',
+    addressCountry: 'KH',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: siteConfig.lat,
+    longitude: siteConfig.lng,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '06:00',
+    closes: '16:30',
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: siteConfig.rating,
+    reviewCount: siteConfig.reviewCount,
+  },
+  sameAs: siteConfig.sameAs,
+};
+---
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+    <link rel="canonical" href={canonical} />
+    {locales.map((l) => <link rel="alternate" hreflang={l.code} href={l.href} />)}
+    <link rel="alternate" hreflang="x-default" href={`${BASE}/`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={htmlLang} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t.meta.title} />
+    <meta name="twitter:description" content={t.meta.description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+Khmer:wght@400;500;700&family=Noto+Serif:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+  </head>
+  <body>
+    <Header lang={lang} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+
+    <script>
+      const els = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+        els.forEach((el) => io.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>

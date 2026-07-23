@@ -1,0 +1,26 @@
+---
+import { ui } from '../i18n/ui';
+import { siteConfig } from '../config/site';
+const { lang } = Astro.props;
+const t = ui(lang);
+---
+<section id="gallery" class="bg-cream py-16">
+  <div class="mx-auto max-w-6xl px-4" data-reveal>
+    <div class="text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-gold">{t.gallery.title}</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-brown md:text-4xl">{t.gallery.title}</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-brown-light">{t.gallery.intro}</p>
+    </div>
+
+    <div class="mt-10 columns-2 gap-4 space-y-4 md:columns-3 lg:columns-4">
+      {siteConfig.gallery.map((src, i) => (
+        <img
+          src={src}
+          alt={t.gallery.alts[i] ?? t.gallery.title}
+          loading="lazy"
+          class="w-full break-inside-avoid rounded-xl shadow-sm transition hover:shadow-md"
+        />
+      ))}
+    </div>
+  </div>
+</section>

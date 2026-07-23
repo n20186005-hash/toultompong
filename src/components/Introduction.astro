@@ -1,0 +1,13 @@
+---
+import { ui } from '../i18n/ui';
+const { lang } = Astro.props;
+const t = ui(lang);
+---
+<section class="bg-cream py-16">
+  <div class="mx-auto max-w-3xl px-4" data-reveal>
+    <h2 class="text-center font-serif text-3xl font-bold text-brown md:text-4xl">{t.intro.title}</h2>
+    <div class="mt-6 space-y-4 text-lg leading-relaxed text-brown-light">
+      {t.intro.body.map((p: string) => <p>{p}</p>)}
+    </div>
+  </div>
+</section>

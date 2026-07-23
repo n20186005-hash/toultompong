@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "title": "Toul Tompong Market (Russian Market) Phnom Penh Travel Guide",
+    "description": "Explore Toul Tompong Market (Russian Market) in Phnom Penh. Discover shopping, local food, culture, opening hours and travel tips."
+  },
+  "header": {
+    "siteName": "Toul Tompong Market",
+    "tagline": "Phnom Penh Travel Guide",
+    "nav": {
+      "overview": "Overview",
+      "info": "Info",
+      "shopping": "Shopping",
+      "food": "Food",
+      "history": "History & Culture",
+      "transport": "Getting There",
+      "nearby": "Nearby",
+      "location": "Map",
+      "faq": "FAQ"
+    }
+  },
+  "hero": {
+    "eyebrow": "Phnom Penh · Cambodia",
+    "title": "Toul Tompong Market",
+    "titleSub": "(Russian Market)",
+    "subtitle": "A famous traditional market in Phnom Penh, known for souvenirs, local products, clothing and Cambodian street food.",
+    "ctaMap": "View Map",
+    "ctaExplore": "Visitor Guide"
+  },
+  "infoCards": {
+    "title": "Attraction Info",
+    "name": "Toul Tompong Market (Russian Market)",
+    "labels": {
+      "type": "Type",
+      "address": "Address",
+      "hours": "Opening Hours",
+      "phone": "Phone",
+      "rating": "Rating"
+    },
+    "type": "Traditional Market",
+    "address": "Corner of St.163 and St.440, Phnom Penh 12310, Cambodia",
+    "hours": "Daily 06:00 - 16:30",
+    "phone": "+855 15 222 930",
+    "ratingText": "4.1 / 5",
+    "reviews": "8,435 reviews"
+  },
+  "intro": {
+    "title": "What is Toul Tompong Market?",
+    "body": [
+      "Toul Tompong Market, also known as Russian Market, is one of Phnom Penh's most famous traditional markets.",
+      "Visitors can explore hundreds of small shops selling handicrafts, souvenirs, clothing, jewelry, antiques and local food.",
+      "It blends everyday local life with a visitor-friendly shopping experience and Cambodian commercial culture."
+    ]
+  },
+  "history": {
+    "title": "Market History & Culture",
+    "body": [
+      "The market is locally called Phsar Tuol Tom Pong. Its nickname \"Russian Market\" comes from the 1980s, when it became a favourite shopping spot for Russian and other foreign visitors.",
+      "Today it stands as a lively meeting point of local community life and Cambodian traditional trade culture."
+    ],
+    "timeline": [
+      { "stage": "Past", "title": "Neighbourhood Market", "desc": "A traditional community market serving the daily needs of local residents." },
+      { "stage": "Growth", "title": "Visitor Favourite", "desc": "From the 1980s it grew into a popular shopping spot for foreign travellers." },
+      { "stage": "Today", "title": "Cultural Shopping Hub", "desc": "Now a vibrant place to experience local life, crafts and Cambodian culture." }
+    ]
+  },
+  "shopping": {
+    "title": "What can you buy?",
+    "intro": "From handmade crafts to vintage finds, the market offers a wide range of local goods.",
+    "items": [
+      { "icon": "🪵", "title": "Handicrafts", "desc": "Explore Cambodian handmade crafts such as wood carving, silverware and traditional artwork." },
+      { "icon": "🎁", "title": "Souvenirs", "desc": "Postcards, small trinkets and travel mementos to remember your trip." },
+      { "icon": "👕", "title": "Clothing", "desc": "T-shirts, traditional garments and colourful textiles." },
+      { "icon": "🏺", "title": "Vintage & Collectibles", "desc": "Antique-style goods and unique collectibles worth hunting for." }
+    ]
+  },
+  "food": {
+    "title": "Local Food",
+    "intro": "Around the market you can experience everyday Phnom Penh street food.",
+    "items": [
+      { "icon": "🍜", "title": "Local Noodles", "desc": "Try Cambodian noodle soups and rice dishes loved by locals." },
+      { "icon": "🍢", "title": "Grilled & BBQ", "desc": "Street-side grilled meats and skewers fresh from the charcoal." },
+      { "icon": "🍉", "title": "Fresh Fruit", "desc": "Tropical fruit stalls with mango, dragon fruit and more." },
+      { "icon": "🥤", "title": "Traditional Drinks", "desc": "Iced coffee, sugarcane juice and other refreshing local beverages." }
+    ]
+  },
+  "tourGuide": {
+    "title": "Recommended Ways to Explore",
+    "intro": "Plan your visit according to your time and interests.",
+    "plans": [
+      { "title": "30-Minute Quick Look", "steps": ["Photo at the entrance", "Browse the main stalls", "Pick up a souvenir"] },
+      { "title": "1–2 Hour In-Depth Visit", "steps": ["Explore the market sections", "Taste local food", "Hunt for special items", "Continue exploring nearby"] }
+    ]
+  },
+  "transport": {
+    "title": "How to get to Toul Tompong Market",
+    "intro": "The market is in the Tuol Tom Pong area of southern Phnom Penh, about 15–20 minutes by tuk-tuk from the riverside.",
+    "modes": [
+      { "icon": "🛺", "title": "Tuk Tuk", "desc": "The most convenient way to reach the market from the city centre." },
+      { "icon": "🚕", "title": "Taxi", "desc": "Comfortable and good for groups or families." },
+      { "icon": "🛵", "title": "Motorbike", "desc": "A common local way to get around the city quickly." }
+    ]
+  },
+  "nearby": {
+    "title": "Explore the Nearby Area",
+    "intro": "Beyond the market, the surrounding district is worth a wander.",
+    "items": [
+      { "title": "Phnom Penh City Area", "desc": "City streets, café culture and other cultural sights within easy reach." },
+      { "title": "Local Neighbourhood", "desc": "Everyday community life and the rhythm of the local market culture." }
+    ]
+  },
+  "reviews": {
+    "title": "Visitor Reviews",
+    "rating": "4.1 / 5",
+    "reviews": "8,435 reviews",
+    "source": "Google Reviews",
+    "prosTitle": "Visitors love",
+    "pros": ["Wide variety of goods", "A real taste of local life", "Great for souvenirs"],
+    "notesTitle": "Good to know",
+    "notes": ["It can get very hot — mornings are best", "Bring cash and bargain politely"]
+  },
+  "map": {
+    "title": "Map & Directions",
+    "caption": "Find Toul Tompong Market on the map and plan your route."
+  },
+  "gallery": {
+    "title": "Photo Gallery",
+    "intro": "A glimpse of the market's entrances, shops, food and everyday atmosphere.",
+    "alts": [
+      "Market entrance",
+      "Shopping alley",
+      "Handicraft stall",
+      "Food stall",
+      "Visitors shopping",
+      "Textile section",
+      "Local vendor",
+      "Souvenir display",
+      "Street food",
+      "Market crowd",
+      "Clothing rack",
+      "Jewelry stall",
+      "Snack corner",
+      "Fruit stand",
+      "Craft corner",
+      "Market street",
+      "Antique items",
+      "Everyday scene"
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      { "q": "What are the opening hours?", "a": "The market is open daily from 06:00 to 16:30." },
+      { "q": "Where is Toul Tompong Market?", "a": "It is at the corner of Street 163 and Street 440 in the Tuol Tom Pong area of Phnom Penh." },
+      { "q": "Why is it called Russian Market?", "a": "The nickname comes from the 1980s, when it became popular with Russian and other foreign visitors." },
+      { "q": "What should I buy there?", "a": "Handicrafts, souvenirs, clothing, jewelry and antique-style collectibles are popular picks." },
+      { "q": "When is the best time to visit?", "a": "Mornings are best — it is cooler and the stalls are fully stocked." }
+    ]
+  },
+  "footer": {
+    "siteName": "Toul Tompong Market Guide",
+    "tagline": "A non-commercial cultural travel guide.",
+    "disclaimer": "This website is an independent travel information resource and is not affiliated with any vendor or business.",
+    "rights": "Information for travelers.",
+    "langTitle": "Language",
+    "mapsLabel": "View on Google Maps"
+  }
+}
