@@ -12,10 +12,10 @@ const { lang } = Astro.props;
 const t = ui(lang);
 
 const htmlLang = lang === 'zh' ? 'zh-CN' : lang;
-const canonical = lang === 'km' ? `${BASE}/` : `${BASE}/${lang}/`;
+const canonical = lang === 'km' ? `${BASE}/km/` : `${BASE}/${lang}/`;
 
 const locales = [
-  { code: 'km', href: `${BASE}/` },
+  { code: 'km', href: `${BASE}/km/` },
   { code: 'en', href: `${BASE}/en/` },
   { code: 'zh', href: `${BASE}/zh/` },
 ];
@@ -66,7 +66,7 @@ const jsonLd = {
     <meta name="description" content={t.meta.description} />
     <link rel="canonical" href={canonical} />
     {locales.map((l) => <link rel="alternate" hreflang={l.code} href={l.href} />)}
-    <link rel="alternate" hreflang="x-default" href={`${BASE}/`} />
+    <link rel="alternate" hreflang="x-default" href={`${BASE}/km/`} />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={t.meta.title} />

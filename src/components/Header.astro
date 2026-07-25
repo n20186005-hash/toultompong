@@ -4,7 +4,7 @@ import { base } from '../i18n/ui';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 const { lang } = Astro.props;
 const t = ui(lang);
-const homeHref = lang === 'km' ? `${base}/` : `${base}/${lang}/`;
+const homeHref = lang === 'km' ? `${base}/km/` : `${base}/${lang}/`;
 const navEntries = Object.entries(t.header.nav) as [string, string][];
 ---
 <header class="sticky top-0 z-50 bg-brown/95 backdrop-blur text-cream shadow-md">
