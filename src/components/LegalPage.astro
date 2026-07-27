@@ -1,0 +1,122 @@
+---
+import { ui } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+  kind: 'privacy' | 'terms' | 'cookies';
+}
+
+const { lang, kind } = Astro.props;
+const t = ui(lang);
+const titleMap: Record<string, Record<string, string>> = {
+  km: { privacy: 'គោលការណ៍ឯកជនភាព', terms: 'លក្ខខណ្ឌសេវាកម្ម', cookies: 'ការកំណត់ខូគី' },
+  en: { privacy: 'Privacy Policy', terms: 'Terms of Service', cookies: 'Cookie Settings' },
+  zh: { privacy: '隐私政策', terms: '服务条款', cookies: 'Cookie 设置' },
+};
+const title = (titleMap[lang] ?? titleMap.en)[kind];
+
+// Import legal data lazily per kind to keep bundle small.
+import { privacyPolicy, termsOfService, cookieSettings } from '../data/legal';
+const doc = kind === 'privacy' ? privacyPolicy[lang] : kind === 'terms' ? termsOfService[lang] : null;
+const cookies = kind === 'cookies' ? cookieSettings[lang] : null;
+---
+
+<section class="bg-cream py-16">
+  <div class="mx-auto max-w-3xl px-4">
+    <h1 class="font-serif text-3xl font-bold text-brown md:text-4xl">{title}</h1>
+    <p class="mt-2 text-sm text-brown-light">
+      {kind === 'cookies' ? cookies!.updated : doc!.updated}
+    </p>
+
+    {kind !== 'cookies' && (
+      <div class="mt-8 space-y-6 text-brown-light leading-relaxed">
+        {doc!.blocks.map((b) => (
+          <div>
+            {b.heading && <h2 class="mb-2 font-serif text-xl font-semibold text-brown">{b.heading}</h2>}
+            {b.paragraphs.map((p) => <p class="mb-2">{p}</p>)}
+          </div>
+        ))}
+      </div>
+    )}
+
+    {kind === 'cookies' && (
+      <div class="mt-8 space-y-6">
+        <p class="text-brown-light leading-relaxed">{cookies!.intro}</p>
+
+        <div class="space-y-4">
+          {cookies!.categories.map((c) => (
+            <div class="rounded-2xl border border-sand-dark bg-sand p-4">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 class="font-semibold text-brown">{c.title}</h3>
+                  <p class="mt-1 text-sm text-brown-light">{c.desc}</p>
+                  {c.provider && (
+                    <p class="mt-1 text-xs text-brown-light/70">Provider: {c.provider}</p>
+                  )}
+                </div>
+                <label class="relative inline-flex shrink-0 cursor-pointer items-center">
+                  <input
+                    type="checkbox"
+                    class="peer sr-only cookie-toggle"
+                    data-key={c.key}
+                    checked={c.defaultOn}
+                    disabled={c.locked}
+                  />
+                  <div class="h-6 w-11 rounded-full bg-sand-dark transition peer-checked:bg-gold peer-disabled:opacity-50 peer-disabled:bg-gold"></div>
+                  <span class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white transition peer-checked:translate-x-5"></span>
+                </label>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p class="text-sm text-brown-light">{cookies!.consentMgmt}</p>
+        <p class="text-xs text-brown-light/70">{cookies!.note}</p>
+
+        <div class="flex flex-wrap gap-3">
+          <button
+            id="save-cookies"
+            class="rounded-full bg-brown px-6 py-2 text-sm font-semibold text-cream hover:bg-brown-light"
+          >
+            {cookies!.saveLabel}
+          </button>
+          <button
+            id="reject-cookies"
+            class="rounded-full border border-brown px-6 py-2 text-sm font-semibold text-brown hover:bg-sand"
+          >
+            {cookies!.rejectAllLabel}
+          </button>
+        </div>
+        <p id="cookie-feedback" class="text-sm text-gold-dark" aria-live="polite"></p>
+      </div>
+    )}
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var save = document.getElementById('save-cookies');
+    var reject = document.getElementById('reject-cookies');
+    var fb = document.getElementById('cookie-feedback');
+    if (!save || !reject) return;
+
+    var labels = {
+      saved: { km: 'ចំណូលចិត្តរបស់អ្នកត្រូវបានរក្សាទុក (បង្ហាញប៉ុណ្ណោះ)។', en: 'Your preferences have been saved (demo only).', zh: '您的偏好已保存（仅演示）。' },
+      rejected: { km: 'ខូគីទាំងអស់ត្រូវបានបដិសេធ លើកលែងតែខូគីចាំបាច់។', en: 'All cookies rejected except necessary ones.', zh: '已拒绝全部 Cookie（必要项除外）。' },
+    };
+    var lang = document.documentElement.lang || 'en';
+    if (lang.indexOf('zh') === 0) lang = 'zh';
+    else if (lang.indexOf('km') === 0) lang = 'km';
+    else lang = 'en';
+
+    save.addEventListener('click', function () {
+      if (fb) fb.textContent = labels.saved[lang];
+    });
+    reject.addEventListener('click', function () {
+      document.querySelectorAll('.cookie-toggle:not([disabled])').forEach(function (el) {
+        el.checked = false;
+      });
+      if (fb) fb.textContent = labels.rejected[lang];
+    });
+  })();
+</script>

@@ -2,7 +2,7 @@
 import { languagesList, base } from '../i18n/ui';
 const { lang } = Astro.props;
 const labels: Record<string, string> = { km: 'ខ្មែរ', en: 'English', zh: '中文' };
-const hrefFor = (l: string) => (l === 'km' ? `${base}/km/` : `${base}/${l}/`);
+const hrefFor = (l: string) => `${base}/${l}`;
 ---
 <div class="relative">
   <details class="relative">

@@ -10,12 +10,12 @@ export const siteConfig = {
     zh: '金边图尔通蓬市场',
   },
 
-  // Google Maps (opens at the market coordinates)
-  mapsUrl: 'https://www.google.com/maps?q=11.5317,104.9170',
-  embedUrl: 'https://www.google.com/maps?q=11.5317,104.9170&output=embed',
+  // Google Maps (opens at the market — official short link)
+  mapsUrl: 'https://maps.app.goo.gl/ig7kDySgZS68HGQBA',
+  embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.1544666573996!2d104.91216281223512!3d11.540774988611023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310951b2c14da4f3%3A0x9ee2eccfc11a8f33!2sToul%20Tompong%20Market%20(Russian%20Market)!5e0!3m2!1szh-CN!2sus!4v1784800884643!5m2!1szh-CN!2sus',
 
-  lat: 11.5317,
-  lng: 104.9170,
+  lat: 11.540774988611023,
+  lng: 104.91216281223512,
   plusCode: '6P25CXP8+QV',
 
   rating: 4.1,
@@ -31,7 +31,7 @@ export const siteConfig = {
     zh: '每日 06:00 - 16:30',
   },
 
-  sameAs: ['https://www.google.com/maps?q=11.5317,104.9170'],
+  sameAs: ['https://maps.app.goo.gl/ig7kDySgZS68HGQBA'],
 
   gallery: Array.from(
     { length: 18 },
