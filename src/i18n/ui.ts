@@ -14,7 +14,7 @@ export function getLangFromUrl(url: URL): string {
   return defaultLang;
 }
 
-export const base = import.meta.env.BASE_URL;
+export const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 
 export function getRouteFromUrl(url: URL): string {
   const seg = url.pathname.split('/').filter(Boolean);
