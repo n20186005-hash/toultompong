@@ -1,5 +1,5 @@
 // Central attraction data for Toul Tompong Market (Russian Market)
-export const BASE = 'https://toultompongmarket.com';
+export const BASE = 'https://toultompong.com';
 
 export const siteConfig = {
   slug: 'toul-tompong-market-russian-market',

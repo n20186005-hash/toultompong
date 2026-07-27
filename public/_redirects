@@ -1,13 +1,7 @@
-/ /km 302
-/en/ /en 301
-/zh/ /zh 301
-/km/ /km 301
-/en/privacy-policy/ /en/privacy-policy 301
-/en/terms-of-service/ /en/terms-of-service 301
-/en/cookie-settings/ /en/cookie-settings 301
-/zh/privacy-policy/ /zh/privacy-policy 301
-/zh/terms-of-service/ /zh/terms-of-service 301
-/zh/cookie-settings/ /zh/cookie-settings 301
-/km/privacy-policy/ /km/privacy-policy 301
-/km/terms-of-service/ /km/terms-of-service 301
-/km/cookie-settings/ /km/cookie-settings 301
+# Netlify redirects
+# The site uses directory-style output (e.g. /km/index.html, /en/index.html).
+# Netlify automatically appends a trailing slash for directories (single,
+# non-looping redirect), so explicit de-slash rules are intentionally omitted
+# to avoid redirect loops (ERR_TOO_MANY_REDIRECTS).
+# The root "/" serves dist/index.html (the Khmer homepage) directly — no
+# redirect needed.

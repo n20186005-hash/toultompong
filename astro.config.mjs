@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://toultompongmarket.com',
+  site: 'https://toultompong.com',
   trailingSlash: 'never',
   vite: {
     plugins: [tailwindcss()],
