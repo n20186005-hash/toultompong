@@ -12,8 +12,9 @@
       "shopping": "Shopping",
       "food": "Food",
       "history": "History & Culture",
-      "transport": "Getting There",
-      "nearby": "Nearby",
+    "transport": "Getting There",
+    "amenities": "Amenities",
+    "nearby": "Nearby",
       "location": "Map",
       "faq": "FAQ"
     }
@@ -92,12 +93,21 @@
     ]
   },
   "transport": {
-    "title": "How to get to Toul Tompong Market",
-    "intro": "The market is in the Tuol Tom Pong area of southern Phnom Penh, about 15–20 minutes by tuk-tuk from the riverside.",
+    "title": "How to Get to Toul Tompong Market",
+    "intro": "The market sits in the Toul Tompong area of southern Phnom Penh, about a 15–20 minute drive from the city centre and riverside. Here are the common routes from the airport and the city.",
+    "airport": {
+      "title": "From Phnom Penh International Airport",
+      "desc": "Phnom Penh International Airport (PNH) is northwest of the city, about 11–13 km from the market.",
+      "taxiTitle": "Taxi / Ride-hailing",
+      "taxiDesc": "Buy a ticket at the official desk in the arrivals hall, or use Grab or PassApp. Route: Airport Road → Russian Federation Boulevard (St 70) → south on Monivong Boulevard → corner of St 163 and St 440. About 30–45 minutes, fare around US$12–15.",
+      "tuktukTitle": "Tuk Tuk",
+      "tuktukDesc": "Around US$8–12 and 40–60 minutes, with street views along the way — good if you are not in a rush.",
+      "tip": "Tip: buy your ticket or book a ride inside the arrivals hall at the official desk to avoid inflated prices outside."
+    },
     "modes": [
-      { "icon": "🛺", "title": "Tuk Tuk", "desc": "The most convenient way to reach the market from the city centre." },
-      { "icon": "🚕", "title": "Taxi", "desc": "Comfortable and good for groups or families." },
-      { "icon": "🛵", "title": "Motorbike", "desc": "A common local way to get around the city quickly." }
+      { "icon": "🛺", "title": "Tuk Tuk (from the city centre)", "desc": "From the riverside (Sisowath Quay) along St 178 → St 63 → St 440 south, about 15–20 minutes — the most local way to travel." },
+      { "icon": "🚕", "title": "Taxi / Ride-hailing", "desc": "From the centre via Monivong Boulevard or Russian Federation Boulevard south, then turn onto St 440, about 15 minutes — comfortable for families or groups." },
+      { "icon": "🛵", "title": "Motorbike / PassApp", "desc": "A common local option, straight via St 63 or St 440, about 15 minutes — fastest and most flexible, but mind safety and sun protection." }
     ]
   },
   "nearby": {
@@ -156,12 +166,59 @@
       { "q": "When is the best time to visit?", "a": "Mornings are best — it is cooler and the stalls are fully stocked." }
     ]
   },
+  "amenities": {
+    "title": "Practical Amenities & Facilities",
+    "intro": "To help you find what you need right after arriving, here is a summary of public facilities and practical information around the market. All content is provided as neutral guidance with no commercial recommendations.",
+    "items": [
+      {
+        "icon": "🚻",
+        "title": "Restrooms & Toilet Facilities",
+        "desc": "Public toilets inside the market are near the central food court and at the outer corners. They are traditional basic facilities (mostly squat and some seated toilets); bring your own tissue and hand sanitizer. A small cleaning fee is charged by an attendant (about 500–1,000 KHR, roughly USD 0.1–0.25). Modern cafés and restaurants within a 2–3 minute walk generally have standard restrooms open to paying customers.",
+        "tip": "Tip: Facilities inside the market are basic; bring small KHR change and your own tissue."
+      },
+      {
+        "icon": "🅿️",
+        "title": "Parking & Drop-off",
+        "desc": "Motorbikes and e-bikes can use marked roadside parking at the four main entrances (e.g. the corner of St. 163 and St. 440), managed by an attendant who issues a parking tag; pay the caretaker fee on exit (about 1,000–2,000 KHR). The surrounding streets are narrow and congested during the day, so driving to find roadside parking is not recommended; take a Tuk-Tuk or ride-hailing service and walk in from the intersection of St. 163 or St. 440."
+      },
+      {
+        "icon": "🍜",
+        "title": "Dining & Refreshment",
+        "desc": "The in-market food stalls serve Khmer-style noodle soup, pork rice, fresh tropical juice and local iced coffee at low prices. The surrounding Toul Tompong (TTP) neighbourhood also has many Western cafés, vegetarian restaurants, specialty coffee shops and Asian-fusion eateries, ideal for air-conditioned, quieter meals."
+      },
+      {
+        "icon": "🏨",
+        "title": "Accommodation",
+        "desc": "Toul Tompong is an established, international residential and arts district of Phnom Penh — relatively quiet and convenient. Budget guesthouses and hostels sit within a 5–10 minute walk of the market; the area also has serviced apartments and boutique hotels suited to families or longer stays."
+      },
+      {
+        "icon": "🛒",
+        "title": "Supermarkets & Convenience",
+        "desc": "Several 24-hour convenience stores are scattered around the market corners for chilled drinks, sun care, wipes and snacks. A mid-size neighbourhood supermarket is about a 5-minute walk along the main road, offering imported food, toiletries and daily goods."
+      },
+      {
+        "icon": "⛽",
+        "title": "Fuel, EV Charging & Power",
+        "desc": "There is no large fuel station on the market's inner streets; the nearest standard station is on a nearby main road (e.g. Mao Tse Toung Blvd or Monivong Blvd), about a 3–5 minute drive away. Public EV chargers are still rare in traditional market areas and are mostly found at large modern malls or designated service points on main roads. Most nearby cafés and restaurants offer free Wi-Fi and wall sockets for emergency charging, and some convenience stores rent power banks."
+      },
+      {
+        "icon": "🏧",
+        "title": "ATMs & Currency Exchange",
+        "desc": "Cambodia widely uses US dollars (USD) and Khmer riel (KHR); small stalls inside the market usually accept cash only (small USD bills or KHR). 24-hour ATM machines from local banks are located at the main street corners and accept international cards; licensed money changers along the streets offer two-way USD/KHR exchange.",
+        "tip": "Tip: Check banknotes for damage when exchanging, and note that small change is usually given in KHR."
+      }
+    ]
+  },
   "footer": {
     "siteName": "Toul Tompong Market Guide",
     "tagline": "An independent, non-profit visitor information project.",
     "disclaimer": "This website is an independent, non-profit visitor information project and is not affiliated with any government agency or official organization. Attraction information is cross-checked against public records from Phnom Penh City Hall, the Cambodia Tourism Board and the Ministry of Tourism and Culture, and contains no commercial recommendations.",
+    "imageRights": "All images displayed on this website are the property of, and copyrighted by, their original photographers.",
     "rights": "Information for travelers.",
     "langTitle": "Language",
-    "mapsLabel": "View on Google Maps"
+    "mapsLabel": "View on Google Maps",
+    "privacyLabel": "Privacy Policy",
+    "termsLabel": "Terms of Service",
+    "cookiesLabel": "Cookie Settings"
   }
 }

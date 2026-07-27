@@ -1,0 +1,29 @@
+---
+import { ui } from '../i18n/ui';
+const { lang } = Astro.props;
+const t = ui(lang);
+---
+<section id="amenities" class="bg-cream py-16">
+  <div class="mx-auto max-w-6xl px-4" data-reveal>
+    <div class="text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-gold">{t.amenities.title}</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-brown md:text-4xl">{t.amenities.title}</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-brown-light">{t.amenities.intro}</p>
+    </div>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {t.amenities.items.map((item: any) => (
+        <div class="flex flex-col rounded-2xl border border-sand-dark bg-sand p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+          <div class="text-4xl">{item.icon}</div>
+          <h3 class="mt-4 font-serif text-xl font-bold text-brown">{item.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-brown-light">{item.desc}</p>
+          {item.tip && (
+            <p class="mt-4 rounded-xl border border-gold/40 bg-cream/60 px-4 py-3 text-xs leading-relaxed text-brown-light">
+              {item.tip}
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

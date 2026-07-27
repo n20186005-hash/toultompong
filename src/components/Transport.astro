@@ -11,7 +11,25 @@ const t = ui(lang);
       <p class="mx-auto mt-3 max-w-2xl text-brown-light">{t.transport.intro}</p>
     </div>
 
-    <div class="mt-10 grid gap-5 sm:grid-cols-3">
+    {t.transport.airport && (
+      <div class="mt-10 rounded-2xl border border-sand-dark bg-cream p-6 shadow-sm">
+        <h3 class="font-serif text-xl font-bold text-brown">{t.transport.airport.title}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-brown-light">{t.transport.airport.desc}</p>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-xl border border-sand-dark bg-sand p-4">
+            <h4 class="font-semibold text-brown">{t.transport.airport.taxiTitle}</h4>
+            <p class="mt-1 text-sm text-brown-light">{t.transport.airport.taxiDesc}</p>
+          </div>
+          <div class="rounded-xl border border-sand-dark bg-sand p-4">
+            <h4 class="font-semibold text-brown">{t.transport.airport.tuktukTitle}</h4>
+            <p class="mt-1 text-sm text-brown-light">{t.transport.airport.tuktukDesc}</p>
+          </div>
+        </div>
+        <p class="mt-4 text-xs text-brown-light/80">ℹ {t.transport.airport.tip}</p>
+      </div>
+    )}
+
+    <div class="mt-8 grid gap-5 sm:grid-cols-3">
       {t.transport.modes.map((m: any) => (
         <div class="rounded-2xl border border-sand-dark bg-cream p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md">
           <div class="text-4xl">{m.icon}</div>

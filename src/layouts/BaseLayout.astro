@@ -55,6 +55,13 @@ const jsonLd = {
     reviewCount: siteConfig.reviewCount,
   },
   sameAs: siteConfig.sameAs,
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: 'Public Restrooms', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Parking', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Food Court', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'ATM', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Currency Exchange', value: true },
+  ],
 };
 ---
 <!doctype html>

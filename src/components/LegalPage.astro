@@ -8,12 +8,8 @@ interface Props {
 
 const { lang, kind } = Astro.props;
 const t = ui(lang);
-const titleMap: Record<string, Record<string, string>> = {
-  km: { privacy: 'គោលការណ៍ឯកជនភាព', terms: 'លក្ខខណ្ឌសេវាកម្ម', cookies: 'ការកំណត់ខូគី' },
-  en: { privacy: 'Privacy Policy', terms: 'Terms of Service', cookies: 'Cookie Settings' },
-  zh: { privacy: '隐私政策', terms: '服务条款', cookies: 'Cookie 设置' },
-};
-const title = (titleMap[lang] ?? titleMap.en)[kind];
+const titleKey = kind === 'privacy' ? 'privacyLabel' : kind === 'terms' ? 'termsLabel' : 'cookiesLabel';
+const title = t.footer[titleKey];
 
 // Import legal data lazily per kind to keep bundle small.
 import { privacyPolicy, termsOfService, cookieSettings } from '../data/legal';
