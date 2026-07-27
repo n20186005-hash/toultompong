@@ -5,9 +5,6 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://toultompongmarket.com',
   trailingSlash: 'never',
-  build: {
-    format: 'file',
-  },
   vite: {
     plugins: [tailwindcss()],
   },

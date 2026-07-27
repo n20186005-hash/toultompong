@@ -55,3 +55,10 @@ html.js .reveal.is-visible {
   border-radius: 1rem;
   filter: grayscale(0.1) contrast(1.02);
 }
+
+/* Image safety net: keep any <img> within its container even if a
+   utility class fails to load, preventing layout blowout. */
+img {
+  max-width: 100%;
+  height: auto;
+}
