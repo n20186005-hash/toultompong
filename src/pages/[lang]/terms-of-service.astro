@@ -8,6 +8,6 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 ---
-<BaseLayout lang={lang}>
+<BaseLayout lang={lang} noindex={true}>
   <LegalPage lang={lang} kind="terms" />
 </BaseLayout>

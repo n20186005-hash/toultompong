@@ -19,7 +19,7 @@ export const siteConfig = {
   plusCode: '6P25CXP8+QV',
 
   rating: 4.1,
-  reviewCount: 8435,
+  reviewCount: 8482,
 
   address: 'Corner of St.163 and St.440, Phnom Penh 12310, Cambodia',
 
@@ -32,6 +32,8 @@ export const siteConfig = {
   },
 
   sameAs: ['https://maps.app.goo.gl/ig7kDySgZS68HGQBA'],
+
+  govTourismUrl: 'https://www.tourismcambodia.com/',
 
   gallery: Array.from(
     { length: 18 },

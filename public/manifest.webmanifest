@@ -1,0 +1,38 @@
+{
+  "name": "Toul Tompong Market - Phnom Penh Visitor Guide",
+  "short_name": "Toul Tompong Market",
+  "description": "Comprehensive visitor guide to Toul Tompong Market (Russian Market) in Phnom Penh, Cambodia.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F5E6D3",
+  "theme_color": "#8B5A2B",
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["travel", "lifestyle", "shopping"],
+  "shortcuts": [
+    {
+      "name": "View Map",
+      "short_name": "Map",
+      "description": "Open location map and directions",
+      "url": "/#location",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "FAQ",
+      "short_name": "FAQ",
+      "description": "Frequently asked questions",
+      "url": "/#faq",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    }
+  ]
+}

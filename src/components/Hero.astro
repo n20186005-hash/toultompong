@@ -1,12 +1,23 @@
 ---
 import { ui } from '../i18n/ui';
 import { siteConfig } from '../config/site';
+import { Image } from 'astro:assets';
 const { lang } = Astro.props;
 const t = ui(lang);
 const heroImg = siteConfig.gallery[0];
 ---
 <section id="overview" class="relative flex min-h-[88vh] items-center overflow-hidden">
-  <img src={heroImg} alt={t.hero.title} class="absolute inset-0 h-full w-full object-cover" />
+  <Image
+    src={heroImg}
+    alt={`${t.hero.title} - Main view in Phnom Penh, Cambodia`}
+    width={1920}
+    height={1080}
+    quality={82}
+    format={['avif', 'webp']}
+    loading="eager"
+    fetchpriority="high"
+    class="absolute inset-0 h-full w-full object-cover"
+  />
   <div class="absolute inset-0 bg-gradient-to-r from-brown/90 via-brown/65 to-transparent"></div>
   <div class="relative mx-auto w-full max-w-6xl px-4 py-24 text-cream" data-reveal>
     <p class="text-sm uppercase tracking-[0.3em] text-gold-soft">{t.hero.eyebrow}</p>
@@ -22,5 +33,11 @@ const heroImg = siteConfig.gallery[0];
         🧭 {t.hero.ctaExplore}
       </a>
     </div>
+    <p class="mt-6 text-xs text-cream/60">
+      {t.hero.ratingSourceText}
+      <a href={siteConfig.mapsUrl} target="_blank" rel="noopener noreferrer" class="text-gold-soft hover:text-gold underline">
+        {t.hero.ratingSourceLink}↗
+      </a>
+    </p>
   </div>
 </section>

@@ -1,0 +1,362 @@
+---
+import { ui } from '../i18n/ui';
+import { siteConfig } from '../config/site';
+
+const { lang } = Astro.props;
+const t = ui(lang);
+
+type CacheEntry = { value: any; expires: number };
+const cache: Map<string, CacheEntry> = new Map();
+
+async function cachedFetchJSON(url: string, ttlMs = 10 * 60 * 1000) {
+  const key = url;
+  const existing = cache.get(key);
+  const now = Date.now();
+  if (existing && existing.expires > now) return existing.value;
+  try {
+    const res = await fetch(url, {
+      headers: { 'Accept': 'application/json' },
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    cache.set(key, { value: data, expires: now + ttlMs });
+    return data;
+  } catch {
+    if (existing) return existing.value;
+    return null;
+  }
+}
+
+function wmoCodeToKey(code: number): string {
+  if (code === 0) return 'clear';
+  if (code <= 3) return code === 1 ? 'clear' : code === 2 ? 'cloudy' : 'overcast';
+  if (code === 45 || code === 48) return 'fog';
+  if (code >= 51 && code <= 57) return 'drizzle';
+  if (code >= 61 && code <= 67) return 'rain';
+  if (code >= 80 && code <= 82) return 'rain';
+  if (code >= 95 && code <= 99) return 'thunder';
+  if (code >= 71 && code <= 86) return 'snow';
+  return 'cloudy';
+}
+
+function rainIntensity(condKey: string, precipMm: number, rainPct: number): 'none'|'light'|'heavy'|'thunder' {
+  if (condKey === 'thunder') return 'thunder';
+  if (condKey === 'rain') {
+    if (precipMm >= 5 || rainPct >= 80) return 'heavy';
+    return 'light';
+  }
+  if (condKey === 'drizzle') return 'light';
+  if (rainPct >= 80) return 'heavy';
+  if (rainPct >= 40) return 'light';
+  return 'none';
+}
+
+function windLevel(kmh: number | null): 0|1|2|3 {
+  if (kmh == null) return 0;
+  if (kmh >= 50) return 3; // ≥7
+  if (kmh >= 30) return 2; // 5-6
+  if (kmh >= 15) return 1;
+  return 0;
+}
+
+const { lat, lng } = siteConfig;
+const units =
+  'temperature_unit=celsius&wind_speed_unit=kmh&precipitation_unit=mm&timezone=auto';
+const currentParams =
+  'current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m';
+const dailyParams =
+  'daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max';
+const url =
+  `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}` +
+  `&${currentParams}&${dailyParams}&${units}&forecast_days=7`;
+
+const data = await cachedFetchJSON(url);
+
+const current = (data && data.current) || null;
+const daily = (data && data.daily) || null;
+
+const hasData = !!current && !!daily && daily.time && daily.time.length > 0;
+
+const currentTempC = current ? Math.round(+current.temperature_2m) : null;
+const feelsLikeC = current ? Math.round(+current.apparent_temperature) : null;
+const humidity = current ? Math.round(+current.relative_humidity_2m) : null;
+const windKmh = current ? Math.round(+current.wind_speed_10m) : null;
+const currentCondKey = current ? wmoCodeToKey(+current.weather_code) : 'cloudy';
+const currentPrecipMm = current ? +current.precipitation : 0;
+
+const maxRainToday =
+  hasData ? Math.round(+(daily.precipitation_probability_max?.[0] ?? 0)) : 0;
+
+const todayHighC = hasData ? Math.round(+(daily.temperature_2m_max?.[0] ?? currentTempC ?? 28)) : 28;
+const todayLowC  = hasData ? Math.round(+(daily.temperature_2m_min?.[0] ?? currentTempC ?? 24)) : 24;
+const todayDelta = todayHighC - todayLowC;
+
+const rainLvl = rainIntensity(currentCondKey, currentPrecipMm, maxRainToday);
+const windLv = windLevel(windKmh);
+
+// UV proxy: rough estimate based on temp + clear/cloudy
+const uvIndexApprox: number = (() => {
+  if (currentTempC == null) return 3;
+  let base = 2;
+  if (currentTempC >= 33) base = 8;
+  else if (currentTempC >= 30) base = 7;
+  else if (currentTempC >= 27) base = 6;
+  else if (currentTempC >= 24) base = 5;
+  else if (currentTempC >= 20) base = 4;
+  else base = 2;
+  if (currentCondKey === 'overcast' || currentCondKey === 'fog' || rainLvl === 'heavy' || rainLvl === 'thunder') base = Math.max(1, base - 3);
+  else if (currentCondKey === 'cloudy' || rainLvl === 'light') base = Math.max(1, base - 1);
+  return base;
+})();
+
+// ---- Build dynamic advice arrays ----
+const A = t.weather.advice as any;
+
+const outfitList: string[] = [];
+const activityList: string[] = [];
+const itemsList: string[] = [];
+const risksList: string[] = [];
+
+// --- RISKS (highest priority first) ---
+if (rainLvl === 'thunder') risksList.push(A.risks.thunder);
+if (rainLvl === 'heavy') risksList.push(A.risks.heavy_rain);
+if (windLv >= 3) risksList.push(A.risks.wind_7);
+if (currentCondKey === 'fog' && rainLvl === 'none') risksList.push(A.risks.fog);
+
+// --- OUTFIT ---
+if (rainLvl !== 'none') outfitList.push(A.outfit.rain_general);
+if (windLv >= 2 && windLv < 3) outfitList.push(A.outfit.wind_5_6);
+if (windLv >= 3) outfitList.push(A.outfit.wind_7);
+if (currentTempC != null && currentTempC >= 32) outfitList.push(A.outfit.hot_32);
+if (currentTempC != null && currentTempC <= 10) outfitList.push(A.outfit.cool_10);
+if (todayDelta > 8) outfitList.push(A.outfit.delta_over_8);
+
+// --- ACTIVITY ---
+if (maxRainToday >= 60 && rainLvl !== 'heavy' && rainLvl !== 'thunder') activityList.push(A.activity.rain_p60);
+if (rainLvl === 'light') activityList.push(A.activity.light_rain);
+if (rainLvl === 'heavy') activityList.push(A.activity.heavy_rain);
+if (rainLvl === 'thunder') activityList.push(A.activity.thunder);
+if (currentTempC != null && currentTempC >= 32) activityList.push(A.activity.hot_32);
+if (uvIndexApprox >= 5 && currentTempC != null && currentTempC < 32) activityList.push(A.activity.uv_5);
+if (currentCondKey === 'clear' && rainLvl === 'none') activityList.push(A.activity.clear);
+if (currentCondKey === 'overcast' && rainLvl === 'none') activityList.push(A.activity.overcast);
+
+// --- ITEMS (weather + scenario-specific) ---
+if (maxRainToday >= 60 && rainLvl !== 'heavy' && rainLvl !== 'thunder') itemsList.push(A.items.rain_p60);
+if (rainLvl === 'light') itemsList.push(A.items.light_rain);
+if (rainLvl === 'heavy') itemsList.push(A.items.heavy_rain);
+if (rainLvl === 'thunder') itemsList.push(A.items.thunder);
+if (currentTempC != null && currentTempC >= 32) itemsList.push(A.items.hot_32);
+if (uvIndexApprox >= 5 && !(currentTempC != null && currentTempC >= 32)) itemsList.push(A.items.uv_5);
+if (currentTempC != null && currentTempC <= 10) itemsList.push(A.items.cool_10);
+if (todayDelta > 8 && !(currentTempC != null && currentTempC <= 10)) itemsList.push(A.items.delta_over_8);
+if (currentCondKey === 'fog' && rainLvl === 'none') itemsList.push(A.items.fog);
+// Add a "always relevant, city humid market" baseline item to avoid empty list
+itemsList.push(A.items.general_humid);
+
+// De-dup (preserve order)
+function uniq(arr: string[]): string[] {
+  const seen = new Set<string>();
+  return arr.filter(s => { if (!s) return false; if (seen.has(s)) return false; seen.add(s); return true; });
+}
+const outfitUniq = uniq(outfitList);
+const activityUniq = uniq(activityList);
+const itemsUniq = uniq(itemsList);
+const risksUniq = uniq(risksList);
+
+const hasRisks = risksUniq.length > 0;
+
+// ---- Build 7-day rows ----
+const adviceRows = hasData
+  ? Array.from({ length: Math.min(7, daily.time.length) }, (_, i) => {
+      const raw = new Date(daily.time[i]);
+      const dow = t.weather.days[raw.getDay()];
+      const day = raw.getDate();
+      const month = t.weather.months[raw.getMonth()];
+      const high = Math.round(+daily.temperature_2m_max[i]);
+      const low = Math.round(+daily.temperature_2m_min[i]);
+      const rain = Math.round(+(daily.precipitation_probability_max?.[i] ?? 0));
+      const condKey = wmoCodeToKey(+daily.weather_code[i]);
+      return {
+        dateLabel: `${dow} ${day} ${month}`,
+        condKey,
+        high,
+        low,
+        rain,
+      };
+    })
+  : [];
+
+// Compact per-day advice based on day's own conditions
+function dailyTip(row: { rain: number; high: number; low: number; condKey: string }): string {
+  const rl = rainIntensity(row.condKey, 0, row.rain);
+  const delta = row.high - row.low;
+  if (rl === 'thunder') return A.activity.thunder;
+  if (rl === 'heavy')   return A.activity.heavy_rain;
+  if (rl === 'light')   return A.activity.light_rain;
+  if (row.rain >= 60)   return A.activity.rain_p60;
+  if (row.high >= 32)   return A.activity.hot_32;
+  if (delta > 8)        return A.outfit.delta_over_8;
+  if (row.condKey === 'clear')    return A.activity.clear;
+  if (row.condKey === 'overcast') return A.activity.overcast;
+  return A.activity.clear;
+}
+---
+
+<section id="weather" class="bg-sand-light py-16">
+  <div class="mx-auto max-w-6xl px-4" data-reveal>
+    <div class="text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-gold">{t.weather.sectionEyebrow}</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-brown md:text-4xl">{t.weather.sectionTitle}</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-brown-light">{t.weather.intro}</p>
+      <p class="mx-auto mt-2 max-w-2xl text-xs italic text-brown-light/80">{t.weather.cityMarketScenario}</p>
+    </div>
+
+    {hasData ? (
+      <div class="mt-8 space-y-6">
+        <div class="grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)]">
+          <div class="rounded-2xl border border-sand-dark bg-cream p-6 shadow-sm">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="text-xs uppercase tracking-wide text-brown-light">{t.weather.currentLabel}</div>
+                <div class="mt-2 flex items-baseline gap-2">
+                  <span class="font-serif text-5xl font-bold text-brown">{currentTempC}</span>
+                  <span class="text-lg text-brown-light">{t.weather.temperatureUnit}</span>
+                </div>
+                <div class="mt-1 text-base font-medium text-brown">{t.weather.conditions[currentCondKey]}</div>
+                <div class="mt-1 text-sm text-brown-light">
+                  {todayLowC}{t.weather.temperatureUnit} ~ {todayHighC}{t.weather.temperatureUnit}
+                  <span class="mx-2 opacity-60">·</span>
+                  {t.weather.uvLabel} {uvIndexApprox >= 7 ? (t.adviceLabel_uv_high ?? '强') : uvIndexApprox >= 5 ? (t.adviceLabel_uv_mid ?? '中') : (t.adviceLabel_uv_low ?? '弱')}
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-brown/5 text-3xl">
+                  {currentCondKey === 'clear' ? '☀️' :
+                   currentCondKey === 'cloudy' ? '⛅' :
+                   currentCondKey === 'overcast' ? '☁️' :
+                   currentCondKey === 'fog' ? '🌫️' :
+                   currentCondKey === 'drizzle' ? '🌦️' :
+                   currentCondKey === 'rain' ? '🌧️' :
+                   currentCondKey === 'thunder' ? '⛈️' :
+                   currentCondKey === 'snow' ? '❄️' : '⛅'}
+                </div>
+              </div>
+            </div>
+
+            <dl class="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
+              <div class="flex items-center justify-between">
+                <dt class="text-brown-light">{t.weather.feelsLikeLabel}</dt>
+                <dd class="font-semibold text-brown">{feelsLikeC}{t.weather.temperatureUnit}</dd>
+              </div>
+              <div class="flex items-center justify-between">
+                <dt class="text-brown-light">{t.weather.humidityLabel}</dt>
+                <dd class="font-semibold text-brown">{humidity}{t.weather.humidityUnit}</dd>
+              </div>
+              <div class="flex items-center justify-between">
+                <dt class="text-brown-light">{t.weather.windLabel}</dt>
+                <dd class="font-semibold text-brown">{windKmh}{t.weather.windUnit}</dd>
+              </div>
+              <div class="flex items-center justify-between">
+                <dt class="text-brown-light">{t.weather.rainLabel}</dt>
+                <dd class="font-semibold text-brown">{maxRainToday}{t.weather.rainUnit}</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="overflow-hidden rounded-2xl border border-sand-dark bg-cream shadow-sm">
+            <table class="w-full min-w-full border-collapse text-sm">
+              <thead>
+                <tr class="bg-brown text-cream">
+                  <th class="px-4 py-3 text-left font-semibold">{t.weather.table.dateHeader}</th>
+                  <th class="px-3 py-3 text-left font-semibold">{t.weather.table.conditionHeader}</th>
+                  <th class="px-3 py-3 text-right font-semibold">{t.weather.table.highHeader}</th>
+                  <th class="px-3 py-3 text-right font-semibold">{t.weather.table.lowHeader}</th>
+                  <th class="px-3 py-3 text-right font-semibold">{t.weather.table.rainHeader}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {adviceRows.map((row, i) => (
+                  <tr class={i % 2 === 0 ? 'bg-cream' : 'bg-sand-light/40'}>
+                    <td class="border-t border-sand-dark px-4 py-3 text-brown align-top">
+                      <div class="font-medium">{row.dateLabel}</div>
+                      <div class="mt-0.5 text-xs text-brown-light">{dailyTip(row)}</div>
+                    </td>
+                    <td class="border-t border-sand-dark px-3 py-3 text-brown">
+                      <span class="mr-2 align-middle">
+                        {row.condKey === 'clear' ? '☀️' :
+                         row.condKey === 'cloudy' ? '⛅' :
+                         row.condKey === 'overcast' ? '☁️' :
+                         row.condKey === 'fog' ? '🌫️' :
+                         row.condKey === 'drizzle' ? '🌦️' :
+                         row.condKey === 'rain' ? '🌧️' :
+                         row.condKey === 'thunder' ? '⛈️' :
+                         row.condKey === 'snow' ? '❄️' : '⛅'}
+                      </span>
+                      {t.weather.conditions[row.condKey]}
+                    </td>
+                    <td class="border-t border-sand-dark px-3 py-3 text-right font-semibold text-brown">{row.high}°</td>
+                    <td class="border-t border-sand-dark px-3 py-3 text-right text-brown-light">{row.low}°</td>
+                    <td class="border-t border-sand-dark px-3 py-3 text-right font-medium text-brown">{row.rain}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {hasRisks && (
+          <div class="rounded-2xl border-2 border-red-400 bg-red-50 p-5">
+            <h3 class="font-semibold text-red-700">{t.weather.risksTitle}</h3>
+            <ul class="mt-2 space-y-2 text-sm text-red-800">
+              {risksUniq.map((r, i) => <li key={i} class="leading-relaxed">{r}</li>)}
+            </ul>
+          </div>
+        )}
+
+        <div class="grid gap-4 md:grid-cols-3">
+          {outfitUniq.length > 0 && (
+            <div class="rounded-2xl border border-sand-dark bg-cream p-5 shadow-sm">
+              <h3 class="font-semibold text-brown">{t.weather.outfitTitle}</h3>
+              <ul class="mt-3 space-y-2 text-sm text-brown">
+                {outfitUniq.map((s, i) => <li key={i} class="leading-relaxed">{s}</li>)}
+              </ul>
+            </div>
+          )}
+
+          {activityUniq.length > 0 && (
+            <div class="rounded-2xl border border-sand-dark bg-cream p-5 shadow-sm">
+              <h3 class="font-semibold text-brown">{t.weather.activityTitle}</h3>
+              <ul class="mt-3 space-y-2 text-sm text-brown">
+                {activityUniq.map((s, i) => <li key={i} class="leading-relaxed">{s}</li>)}
+              </ul>
+            </div>
+          )}
+
+          {itemsUniq.length > 0 && (
+            <div class="rounded-2xl border border-sand-dark bg-cream p-5 shadow-sm">
+              <h3 class="font-semibold text-brown">{t.weather.itemsTitle}</h3>
+              <ul class="mt-3 list-disc space-y-1.5 pl-5 text-sm text-brown">
+                {itemsUniq.map((s, i) => <li key={i} class="leading-relaxed">{s}</li>)}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        {!hasRisks && risksUniq.length === 0 && outfitUniq.length === 0 && activityUniq.length === 0 && itemsUniq.length === 0 ? (
+          <div class="rounded-2xl border border-sand-dark bg-cream p-6 text-center text-sm text-brown-light">
+            {t.weather.noRisks}
+          </div>
+        ) : null}
+
+        <p class="mt-2 text-right text-xs text-brown-light/80 italic">
+          {t.weather.outroHumidNote}
+        </p>
+      </div>
+    ) : (
+      <div class="mt-8 rounded-2xl border border-sand-dark bg-cream p-8 text-center text-brown-light shadow-sm">
+        {t.weather.intro}
+      </div>
+    )}
+  </div>
+</section>

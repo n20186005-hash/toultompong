@@ -7,34 +7,85 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
   lang: string;
+  /** Mark policy / legal pages as non-indexable. */
+  noindex?: boolean;
 }
-const { lang } = Astro.props;
+const { lang, noindex = false } = Astro.props;
 const t = ui(lang);
 
 const htmlLang = lang === 'zh' ? 'zh-CN' : lang;
-const canonical = lang === 'km' ? `${BASE}/km` : `${BASE}/${lang}`;
 
+function withTrailing(url: string): string {
+  if (url.endsWith('/')) return url;
+  return url + '/';
+}
+
+const pagePathname = Astro.url.pathname; // e.g. /en /en/ /zh/privacy-policy
+// Normalize canonical with trailing slash.
+const canonical = withTrailing(
+  pagePathname && pagePathname.length > 0 && pagePathname !== '/'
+    ? `${BASE}${pagePathname}`
+    : `${BASE}/${lang}/`
+);
+
+// Hreflang + x-default (en as fallback, because GSC showed en as majority traffic)
 const locales = [
-  { code: 'km', href: `${BASE}/km` },
-  { code: 'en', href: `${BASE}/en` },
-  { code: 'zh', href: `${BASE}/zh` },
+  { code: 'km', href: withTrailing(`${BASE}/km`) },
+  { code: 'zh', href: withTrailing(`${BASE}/zh`) },
+  { code: 'en', href: withTrailing(`${BASE}/en`) },
 ];
+const hreflangDefault = withTrailing(`${BASE}/en`);
 
-const ogImage = `${BASE}${siteConfig.gallery[0]}`;
+const ogImage = withTrailing(`${BASE}${siteConfig.gallery[0]}`);
+const attractionFullName = 'Toul Tompong Market (Russian Market)';
+const attractionShortName = 'Toul Tompong Market';
+const cityName = 'Phnom Penh';
+const stateProvince = 'Phnom Penh';
+const countryName = 'Cambodia';
 
-const jsonLd = {
+const attractionJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'TouristAttraction',
-  name: 'Toul Tompong Market (Russian Market)',
-  description: ui('en').meta.description,
-  image: ogImage,
+  '@type': ['TouristAttraction', 'Store', 'LocalBusiness'],
+  '@id': `${BASE}/#attraction`,
+  name: attractionFullName,
+  alternateName: [
+    attractionShortName,
+    `${cityName} ${attractionFullName}`,
+    'Phsar Tuol Tompong',
+    'ផ្សារទួលទំពូង',
+    '金边俄罗斯市场',
+  ],
+  description: t.meta.description,
+  disambiguatingDescription: `${attractionFullName} — also known as Russian Market, Phsar Tuol Tompong, ផ្សារទួលទំពូង. A covered traditional daily market in central ${cityName}, ${countryName}.`,
   url: canonical,
+  image: siteConfig.gallery.map((g) => withTrailing(`${BASE}${g}`)),
+  photo: siteConfig.gallery.map((g, i) => ({
+    '@type': 'ImageObject',
+    '@id': `${BASE}/#photo-${i + 1}`,
+    url: withTrailing(`${BASE}${g}`),
+    width: 1920,
+    height: 1080,
+    inLanguage: htmlLang,
+    author: {
+      '@type': 'Organization',
+      name: `${siteConfig.name[lang as keyof typeof siteConfig.name]} — Non‑Profit Visitor Guide`,
+    },
+    contentUrl: withTrailing(`${BASE}${g}`),
+    description: `${attractionFullName}, ${cityName}, ${countryName} — gallery photo ${i + 1}.`,
+    name: `${attractionFullName} photo ${i + 1}`,
+    representativeOfPage: i === 0,
+  })),
+  isAccessibleForFree: true,
+  publicAccess: true,
   telephone: siteConfig.phone,
+  hasMap: siteConfig.mapsUrl,
+  acceptsReservations: false,
+  priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Corner of St.163 and St.440',
-    addressLocality: 'Phnom Penh',
-    addressRegion: 'Phnom Penh',
+    addressLocality: cityName,
+    addressRegion: stateProvince,
     postalCode: '12310',
     addressCountry: 'KH',
   },
@@ -42,51 +93,146 @@ const jsonLd = {
     '@type': 'GeoCoordinates',
     latitude: siteConfig.lat,
     longitude: siteConfig.lng,
+    plusCode: siteConfig.plusCode,
   },
+  containedIn: {
+    '@type': 'City',
+    name: cityName,
+    containedIn: {
+      '@type': 'Country',
+      name: countryName,
+    },
+  },
+  containsPlace: [
+    { '@type': 'LocalBusiness', name: 'Food Court & Stalls', description: 'Local Cambodian street food and cooked meals inside the market.' },
+    { '@type': 'Store', name: 'Souvenir & Handicraft Zone' },
+    { '@type': 'Store', name: 'Apparel & Textile Zone' },
+    { '@type': 'Store', name: 'Silver, Jewelry & Collectibles Zone' },
+    { '@type': 'Store', name: 'Daily Grocery & Wet Market Zone' },
+  ],
+  areaServed: [{
+    '@type': 'AdministrativeArea',
+    name: `${cityName}, ${countryName}`,
+  }],
+  knowsLanguage: ['English', 'Khmer', 'Mandarin Chinese'],
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     opens: '06:00',
     closes: '16:30',
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: siteConfig.rating,
-    reviewCount: siteConfig.reviewCount,
-  },
-  sameAs: siteConfig.sameAs,
+  sameAs: [...siteConfig.sameAs, siteConfig.govTourismUrl],
   amenityFeature: [
     { '@type': 'LocationFeatureSpecification', name: 'Public Restrooms', value: true },
-    { '@type': 'LocationFeatureSpecification', name: 'Parking', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Parking (Motorbike & Car)', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'Food Court', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'ATM', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'Currency Exchange', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Covered (Roofed) Walkways', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Wheelchair Accessible Aisles', value: true },
+  ],
+  category: ['market', 'shopping', 'localFood', 'attraction'],
+};
+
+const imageGalleryJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  '@id': `${BASE}/#gallery`,
+  name: `${attractionFullName} — Photo Gallery`,
+  description: `Highlights of ${attractionFullName} (Russian Market / Phsar Tuol Tompong / ផ្សារទួលទំពូង) in ${cityName}.`,
+  inLanguage: htmlLang,
+  url: canonical,
+  image: siteConfig.gallery.map((g) => withTrailing(`${BASE}${g}`)),
+  numberOfItems: siteConfig.gallery.length,
+};
+
+const faqItems = t.faq.items;
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((it: any) => ({
+    '@type': 'Question',
+    name: it.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: it.a,
+    },
+  })),
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: t.meta.ogSiteTitle || 'Toul Tompong Market',
+      item: withTrailing(`${BASE}/${lang}/`),
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: t.meta.title || `${attractionFullName} ${cityName}`,
+      item: canonical,
+    },
   ],
 };
+
+const ogTitle = t.meta.title;
+const ogDesc  = t.meta.description;
 ---
 <!doctype html>
 <html lang={htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {noindex && <meta name="robots" content="noindex, follow, max-image-preview:large" />}
+    {!noindex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
     <title>{t.meta.title}</title>
     <meta name="description" content={t.meta.description} />
+    <meta name="keywords" content={t.meta.keywords} />
+    <meta name="author" content={t.meta.author} />
     <link rel="canonical" href={canonical} />
-    {locales.map((l) => <link rel="alternate" hreflang={l.code} href={l.href} />)}
-    <link rel="alternate" hreflang="x-default" href={`${BASE}/km`} />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={t.meta.title} />
-    <meta property="og:description" content={t.meta.description} />
+    {locales.map((l) => <link rel="alternate" hreflang={l.code} href={l.href} />)}
+    <link rel="alternate" hreflang="x-default" href={hreflangDefault} />
+
+    {/* OG / Twitter */}
+    <meta property="og:type" content="tourist_attraction" />
+    <meta property="og:site_name" content={t.meta.ogSiteTitle ?? 'Toul Tompong Market'} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDesc} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:alt" content={`${attractionFullName} in ${cityName}, ${countryName}`} />
     <meta property="og:locale" content={htmlLang} />
+    <meta property="og:locale:alternate" content="km" />
+    <meta property="og:locale:alternate" content="zh-CN" />
+    <meta property="og:locale:alternate" content="en" />
+    <meta property="og:street_address" content="Corner of St.163 and St.440" />
+    <meta property="og:locality" content={cityName} />
+    <meta property="og:region" content={stateProvince} />
+    <meta property="og:postal_code" content="12310" />
+    <meta property="og:country_name" content={countryName} />
+    <meta property="og:phone_number" content={siteConfig.phone} />
+    <meta property="place:location:latitude" content={String(siteConfig.lat)} />
+    <meta property="place:location:longitude" content={String(siteConfig.lng)} />
+
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={t.meta.title} />
-    <meta name="twitter:description" content={t.meta.description} />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDesc} />
     <meta name="twitter:image" content={ogImage} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#8B5A2B" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -94,9 +240,12 @@ const jsonLd = {
       rel="stylesheet"
     />
     <script is:inline>document.documentElement.classList.add('js');</script>
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(attractionJsonLd)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(imageGalleryJsonLd)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)}></script>
 
-    <!-- Google tag (gtag.js) -->
+    {/* Google tag (gtag.js) */}
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-HXM22WWPKP"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -130,6 +279,13 @@ const jsonLd = {
         els.forEach((el) => io.observe(el));
       } else {
         els.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+    <script is:inline>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').catch(function () {});
+        });
       }
     </script>
   </body>

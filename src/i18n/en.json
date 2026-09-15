@@ -1,31 +1,41 @@
 {
   "meta": {
-    "title": "Toul Tompong Market (Russian Market) Phnom Penh Travel Guide",
-    "description": "Explore Toul Tompong Market (Russian Market) in Phnom Penh. Discover shopping, local food, culture, opening hours and travel tips."
+    "title": "Toul Tompong Market (Russian Market) Phnom Penh | Opening Hours, Map & Guide",
+    "description": "Visiting Toul Tompong Market (Russian Market) in Phnom Penh? Find daily opening hours 06:00–16:30, map location Corner St.163 & 440, food stalls, souvenir prices, bargaining tips and transport.",
+    "keywords": "Toul Tompong Market,Russian Market Phnom Penh,Phsar Tuol Tompong,Toul Tompong Market opening hours,Russian Market address,Phnom Penh market guide,Toul Tompong photos,Phsar Tuol Tompong reviews,Cambodia shopping,金边俄罗斯市场",
+    "author": "toultompong.com — Non-Profit Visitor Guide",
+    "ogSiteTitle": "Toul Tompong Market (Russian Market) — Phnom Penh Guide"
   },
   "header": {
     "siteName": "Toul Tompong Market",
     "tagline": "Phnom Penh Travel Guide",
     "nav": {
       "overview": "Overview",
+      "weather": "Weather",
       "info": "Info",
       "shopping": "Shopping",
       "food": "Food",
       "history": "History & Culture",
-    "transport": "Getting There",
-    "amenities": "Amenities",
-    "nearby": "Nearby",
+      "routes": "Routes",
+      "seasons": "Seasons",
+      "transport": "Getting There",
+      "services": "Services",
+      "amenities": "Amenities",
+      "responsibility": "Responsibility",
+      "nearby": "Nearby",
       "location": "Map",
       "faq": "FAQ"
     }
   },
   "hero": {
     "eyebrow": "Phnom Penh · Cambodia",
-    "title": "Toul Tompong Market",
-    "titleSub": "(Russian Market)",
-    "subtitle": "A famous traditional market in Phnom Penh, known for souvenirs, local products, clothing and Cambodian street food.",
+    "title": "Toul Tompong Market (Russian Market)",
+    "titleSub": "(Phnom Penh)",
+    "subtitle": "Welcome to Toul Tompong Market (Russian Market), widely recognized as the central Toul Tompong Market. Located in the heart of Phnom Penh, Phnom Penh, Cambodia, this destination serves as a primary hub for travelers visiting the region. A famous traditional market known for souvenirs, local products, clothing and Cambodian street food.",
     "ctaMap": "View Map",
-    "ctaExplore": "Visitor Guide"
+    "ctaExplore": "Visitor Guide",
+    "ratingSourceText": "Rating and review count synced from Google Maps user reviews · September 2026 ·",
+    "ratingSourceLink": "View all reviews on Google Maps"
   },
   "infoCards": {
     "title": "Attraction Info",
@@ -42,18 +52,18 @@
     "hours": "Daily 06:00 - 16:30",
     "phone": "+855 15 222 930",
     "ratingText": "4.1 / 5",
-    "reviews": "8,435 reviews"
+    "reviews": "8,482 reviews"
   },
   "intro": {
-    "title": "What is Toul Tompong Market?",
+    "title": "About Toul Tompong Market",
     "body": [
-      "Toul Tompong Market, also known as Russian Market, is one of Phnom Penh's most famous traditional markets.",
-      "Visitors can explore hundreds of small shops selling handicrafts, souvenirs, clothing, jewelry, antiques and local food.",
+      "Toul Tompong Market (Russian Market) → Phnom Penh → Phnom Penh → Cambodia. Welcome to Toul Tompong Market, widely recognized as the central Toul Tompong Market. Located in the heart of Phnom Penh, Phnom Penh, Cambodia, this destination serves as a primary hub for travelers visiting the region.",
+      "Toul Tompong Market, also known as Russian Market, is one of Phnom Penh's most famous traditional markets. Visitors can explore hundreds of small shops selling handicrafts, souvenirs, clothing, jewelry, antiques and local food.",
       "It blends everyday local life with a visitor-friendly shopping experience and Cambodian commercial culture."
     ]
   },
   "history": {
-    "title": "Market History & Culture",
+    "title": "History & Significance of Toul Tompong Market",
     "body": [
       "The market is locally called Phsar Tuol Tom Pong. Its nickname \"Russian Market\" comes from the 1980s, when it became a favourite shopping spot for Russian and other foreign visitors.",
       "Today it stands as a lively meeting point of local community life and Cambodian traditional trade culture."
@@ -93,7 +103,7 @@
     ]
   },
   "transport": {
-    "title": "How to Get to Toul Tompong Market",
+    "title": "Location & How to Visit Toul Tompong Market in Phnom Penh",
     "intro": "The market sits in the Toul Tompong area of southern Phnom Penh, about a 15–20 minute drive from the city centre and riverside. Here are the common routes from the airport and the city.",
     "airport": {
       "title": "From Phnom Penh International Airport",
@@ -111,18 +121,22 @@
     ]
   },
   "nearby": {
-    "title": "Explore the Nearby Area",
-    "intro": "Beyond the market, the surrounding district is worth a wander.",
+    "title": "Landmarks & Attractions Around Toul Tompong Market",
+    "intro": "When visiting Toul Tompong Market, visitors can easily explore surrounding historical landmarks and points of interest, including Phnom Penh City Centre and the Toul Tompong Local Neighbourhood. Beyond the market, the surrounding district is worth a wander.",
     "items": [
-      { "title": "Phnom Penh City Area", "desc": "City streets, café culture and other cultural sights within easy reach." },
-      { "title": "Local Neighbourhood", "desc": "Everyday community life and the rhythm of the local market culture." }
+      { "title": "Phnom Penh City Centre", "desc": "City streets, café culture and other cultural sights within easy reach." },
+      { "title": "Toul Tompong Local Neighbourhood", "desc": "Everyday community life and the rhythm of the local market culture." }
     ]
   },
   "reviews": {
     "title": "Visitor Reviews",
     "rating": "4.1 / 5",
-    "reviews": "8,435 reviews",
+    "reviews": "8,482 reviews",
     "source": "Google Reviews",
+    "sourceLine1": "Rating and review count synced from Google Maps user reviews · September 2026 ·",
+    "sourceLink1": "View all reviews on Google Maps",
+    "sourceAttribution": "Synced from Google Maps user reviews, sync time September 2026; copyright belongs to the original authors and Google Maps.",
+    "viewAllButton": "View all reviews on Google Maps",
     "prosTitle": "Visitors love",
     "pros": ["Wide variety of goods", "A real taste of local life", "Great for souvenirs"],
     "notesTitle": "Good to know",
@@ -136,34 +150,37 @@
     "title": "Photo Gallery",
     "intro": "A glimpse of the market's entrances, shops, food and everyday atmosphere.",
     "alts": [
-      "Market entrance",
-      "Shopping alley",
-      "Handicraft stall",
-      "Food stall",
-      "Visitors shopping",
-      "Textile section",
-      "Local vendor",
-      "Souvenir display",
-      "Street food",
-      "Market crowd",
-      "Clothing rack",
-      "Jewelry stall",
-      "Snack corner",
-      "Fruit stand",
-      "Craft corner",
-      "Market street",
-      "Antique items",
-      "Everyday scene"
+      "Toul Tompong Market (Russian Market) - Main entrance view in Phnom Penh, Cambodia",
+      "Toul Tompong Market shopping alley in Phnom Penh, Cambodia",
+      "Handicraft stall at Toul Tompong Market Russian Market Phnom Penh",
+      "Local food stall inside Toul Tompong Market Phnom Penh",
+      "Visitors shopping at Toul Tompong Market (Russian Market) Phnom Penh",
+      "Textile section at Toul Tompong Market Russian Market Cambodia",
+      "Local vendor selling goods at Toul Tompong Market Phnom Penh",
+      "Souvenir display near Toul Tompong Market in Phnom Penh",
+      "Cambodian street food at Toul Tompong Market Russian Market",
+      "Market crowd scene at Toul Tompong Market Phnom Penh Cambodia",
+      "Clothing rack at Toul Tompong Market (Russian Market) Phnom Penh",
+      "Jewelry stall inside Toul Tompong Market Phnom Penh Cambodia",
+      "Snack corner near Toul Tompong Market Russian Market",
+      "Fruit stand near Toul Tompong Market Phnom Penh Cambodia",
+      "Craft corner at Toul Tompong Market (Russian Market) Phnom Penh",
+      "Toul Tompong Market street view in Phnom Penh Cambodia",
+      "Antique items at Toul Tompong Market Russian Market Phnom Penh",
+      "Everyday local scene at Toul Tompong Market Phnom Penh Cambodia"
     ]
   },
   "faq": {
     "title": "Frequently Asked Questions",
     "items": [
+      { "q": "Where is Toul Tompong Market located?", "a": "Toul Tompong Market (Russian Market) is located in Phnom Penh, Phnom Penh, Cambodia, at the corner of Street 163 and Street 440 in the Tuol Tom Pong area." },
+      { "q": "Is Toul Tompong Market free to visit?", "a": "Yes, Toul Tompong Market (Russian Market) is a public space and is free to visit year-round. There is no entrance fee." },
       { "q": "What are the opening hours?", "a": "The market is open daily from 06:00 to 16:30." },
-      { "q": "Where is Toul Tompong Market?", "a": "It is at the corner of Street 163 and Street 440 in the Tuol Tom Pong area of Phnom Penh." },
       { "q": "Why is it called Russian Market?", "a": "The nickname comes from the 1980s, when it became popular with Russian and other foreign visitors." },
       { "q": "What should I buy there?", "a": "Handicrafts, souvenirs, clothing, jewelry and antique-style collectibles are popular picks." },
-      { "q": "When is the best time to visit?", "a": "Mornings are best — it is cooler and the stalls are fully stocked." }
+      { "q": "When is the best time to visit?", "a": "Mornings are best — it is cooler and the stalls are fully stocked." },
+      { "q": "What is the rating of Toul Tompong Market?", "a": "Toul Tompong Market has a 4.1 / 5 rating based on 8,482 Google Maps user reviews, synced in September 2026." },
+      { "q": "How do I get to Toul Tompong Market from the airport?", "a": "From Phnom Penh International Airport, take a taxi or Grab via Airport Road → Russian Federation Boulevard (St 70) → Monivong Boulevard south → corner of St 163 and St 440. About 30–45 minutes drive." }
     ]
   },
   "amenities": {
@@ -213,12 +230,313 @@
     "siteName": "Toul Tompong Market Guide",
     "tagline": "An independent, non-profit visitor information project.",
     "disclaimer": "This website is an independent, non-profit visitor information project and is not affiliated with any government agency or official organization. Attraction information is cross-checked against public records from Phnom Penh City Hall, the Cambodia Tourism Board and the Ministry of Tourism and Culture, and contains no commercial recommendations.",
-    "imageRights": "All images displayed on this website are the property of, and copyrighted by, their original photographers.",
+    "imageRights": "All images displayed on this website are the property of, and copyrighted by, their original photographers. All image rights and copyrights belong to the original photographers.",
     "rights": "Information for travelers.",
     "langTitle": "Language",
     "mapsLabel": "View on Google Maps",
     "privacyLabel": "Privacy Policy",
     "termsLabel": "Terms of Service",
     "cookiesLabel": "Cookie Settings"
+  },
+  "sources": {
+    "title": "Sources & References",
+    "sectionEyebrow": "E-E-A-T · Sources",
+    "sectionTitle": "Sources & Data References",
+    "intro": "This page compiles public and authoritative reference sources to ensure accuracy, transparency and editorial independence.",
+    "items": [
+      {
+        "title": "Google Maps — Rating and Review Data",
+        "meta": "Reviews · Synced September 2026",
+        "desc": "Synced from Google Maps user reviews, sync time September 2026; copyright belongs to the original authors and Google Maps.",
+        "linkLabel": "View all reviews on Google Maps"
+      },
+      {
+        "title": "Cambodia Official Tourism Portal",
+        "meta": "Tourism Authority · Official Reference",
+        "desc": "Official travel updates, regional tourism information and destination recommendations from the national tourism authority.",
+        "linkLabel": "Cambodia / Phnom Penh Official Tourism Portal"
+      },
+      {
+        "title": "Phnom Penh Public Geographic Information",
+        "meta": "Location & Address · Cross-checked",
+        "desc": "Market coordinates, Plus Code, street address and map data verified against Google Maps and Phnom Penh public records.",
+        "linkLabel": "Open location on Google Maps"
+      }
+    ]
+  },
+  "tourismLink": {
+    "label": "For official updates and regional tourism information, visit",
+    "linkText": "Cambodia / Phnom Penh Official Tourism Portal"
+  },
+  "weather": {
+    "sectionEyebrow": "Live · Weather",
+    "sectionTitle": "Phnom Penh Weather & Visit Tips",
+    "intro": "Current weather plus a multi-day outlook — with practical, ready-to-follow suggestions on what to wear, what to bring and how to plan your market visit.",
+    "currentLabel": "Now",
+    "feelsLikeLabel": "Feels like",
+    "humidityLabel": "Humidity",
+    "windLabel": "Wind",
+    "rainLabel": "Rain chance",
+    "uvLabel": "UV Index",
+    "temperatureUnit": "°C",
+    "windUnit": "km/h",
+    "humidityUnit": "%",
+    "rainUnit": "%",
+    "outfitTitle": "✅ Outfit & Travel",
+    "activityTitle": "✅ Visit & Itinerary",
+    "itemsTitle": "🎒 Bring along",
+    "risksTitle": "⚠️ Weather Alert",
+    "noRisks": "⚠️ No active weather alerts",
+    "outroHumidNote": "Humid tropical weather — stay hydrated and rest in shade whenever you can.",
+    "cityMarketScenario": "This is an indoor/outdoor covered city market; the risk is mainly wet floors, heat exhaustion in narrow aisles and slippery entrances.",
+    "advice": {
+      "outfit": {
+        "hot_32": "It's hot today — wear light, breathable cotton or linen. Avoid dark colours and long sleeves if you can.",
+        "cool_10": "Cool weather — pack a warm jacket, scarf or long sleeves.",
+        "delta_over_8": "Big day-night temperature swing — carry a thin jacket you can take on and off easily.",
+        "rain_general": "Wear waterproof shoes or sandals you don't mind getting wet. Avoid white fabric.",
+        "wind_5_6": "Wind is picking up — avoid loose, long skirts/dresses that can blow up. Hats may blow off.",
+        "wind_7": "Strong wind — avoid loose clothing and anything lightweight that can blow away."
+      },
+      "activity": {
+        "rain_p60": "Rain is very likely today. Prefer the covered aisles inside the market; skip long outdoor walks around the neighbourhood.",
+        "light_rain": "Light rain — the market is still usable but the concrete alleyways and tile floors can be slippery, take shorter steps.",
+        "heavy_rain": "Heavy rain. Stick to the covered main aisles and food court. Skip the narrow outdoor lanes near the gates.",
+        "thunder": "Thunderstorms nearby. Stay inside the covered market structure; avoid open gates, metal awnings and open-air tuk-tuk rides if possible.",
+        "hot_32": "Avoid walking the market between 11:00 and 14:00 when the roof traps the most heat. Come early or after 15:00.",
+        "uv_5": "Sun is strong today — limit the time you spend in uncovered alleys and on street crossings.",
+        "clear": "Beautiful sunny weather. Great for early arrival photos at the entrances and walking around the nearby local streets.",
+        "overcast": "Soft overcast light — perfect for photos and long walks. No harsh shadows inside or outside."
+      },
+      "items": {
+        "rain_p60": "Umbrella or compact raincoat",
+        "light_rain": "Foldable umbrella",
+        "heavy_rain": "Raincoat (better than a long-handled umbrella in strong wind)",
+        "thunder": "Raincoat; avoid carrying anything tall and metallic outdoors",
+        "hot_32": "Water bottle, small portable fan, sun protection, cool towel",
+        "uv_5": "Sunscreen, sunglasses, a wide-brim hat",
+        "cool_10": "Warm jacket, scarf",
+        "delta_over_8": "Thin jacket or cardigan",
+        "fog": "Face mask for outdoor walks",
+        "general_humid": "Tissue / small towel for sweat, hand sanitizer"
+      },
+      "risks": {
+        "heavy_rain": "⚠️ Heavy rain alert — low spots near the market gates may pool water. Avoid stepping into unknown puddles. Avoid valley-like low side streets.",
+        "thunder": "⚠️ Lightning risk — do NOT stand under isolated trees, open awnings or near tall metal signs outside the market while thunder is active.",
+        "wind_7": "⚠️ Strong wind alert — keep away from loose signage, hanging banners and rooftop items near the market entrances. Avoid open-air tuk-tuk rides if possible.",
+        "fog": "⚠️ Low visibility — expect local traffic delays. Walking near the market is fine but please watch for motorbikes carefully."
+      }
+    },
+    "table": {
+      "dateHeader": "Date",
+      "conditionHeader": "Condition",
+      "highHeader": "High",
+      "lowHeader": "Low",
+      "rainHeader": "Rain %",
+      "adviceHeader": "Today's Tip"
+    },
+    "conditions": {
+      "clear": "Clear",
+      "cloudy": "Cloudy",
+      "overcast": "Overcast",
+      "fog": "Foggy",
+      "drizzle": "Drizzle",
+      "rain": "Rain",
+      "thunder": "Thunderstorms",
+      "snow": "Snow"
+    },
+    "days": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  },
+  "quarterStrategy": {
+    "sectionEyebrow": "E-E-A-T · Quarterly Strategy",
+    "sectionTitle": "Quarterly Visit Strategy",
+    "intro": "Comprehensive seasonal analysis combining climate, local rainfall patterns and typical market crowd levels — derived from 30-year Phnom Penh climate averages and historical visitor trends.",
+    "table": {
+      "quarterHeader": "Quarter",
+      "weatherHeader": "Weather & Temperature",
+      "rainfallHeader": "Rainfall",
+      "crowdHeader": "Market Crowd",
+      "recommendationHeader": "Recommendation",
+      "notesHeader": "What to pack"
+    },
+    "rows": [
+      {
+        "quarter": "Q1 · Dec–Feb",
+        "weather": "Cool & dry, 24–32 °C",
+        "rainfall": "Low",
+        "crowd": "Busy mornings",
+        "recommendation": "Best time to visit",
+        "notes": "Light layers, water bottle, hat"
+      },
+      {
+        "quarter": "Q2 · Mar–May",
+        "weather": "Hot, 27–35 °C",
+        "rainfall": "Medium – occasional showers",
+        "crowd": "Moderate",
+        "recommendation": "Visit early morning",
+        "notes": "Sunblock, umbrella, hydration packs"
+      },
+      {
+        "quarter": "Q3 · Jun–Aug",
+        "weather": "Warm & humid, 26–33 °C",
+        "rainfall": "High – afternoon rains",
+        "crowd": "Quieter",
+        "recommendation": "Plan indoor & outdoor mix",
+        "notes": "Raincoat, quick-dry clothes, sandals"
+      },
+      {
+        "quarter": "Q4 · Sep–Nov",
+        "weather": "Humid, 25–32 °C",
+        "rainfall": "Medium to high",
+        "crowd": "Moderate",
+        "recommendation": "Go before lunch",
+        "notes": "Umbrella, mosquito repellent"
+      }
+    ],
+    "legend": "Climate baseline derived from the Phnom Penh 30-year climatology reference period; actual conditions may vary and should be confirmed with the live forecast above."
+  },
+  "customRoutes": {
+    "sectionEyebrow": "Planner · Customized Routes",
+    "sectionTitle": "Customized Visit Routes",
+    "intro": "Three travel styles plus general half-day and full-day suggestions — choose the rhythm that fits your group.",
+    "groups": [
+      {
+        "id": "family",
+        "icon": "👨‍👩‍👧‍👦",
+        "title": "Family & Kids Friendly",
+        "pace": "Slow · ~2.5 h · frequent stops",
+        "highlights": [
+          "Start early (07:00) when it's cool and stalls are just opening.",
+          "Focus on the colourful handicraft section and sweets stalls first (visual appeal for kids).",
+          "Visit the food court for a mid-morning snack — choose stalls with visible cooked-to-order dishes.",
+          "Plan one rest break at an air-conditioned café nearby before the return trip."
+        ]
+      },
+      {
+        "id": "photo",
+        "icon": "📷",
+        "title": "Photography & Nature Lovers",
+        "pace": "Slow · ~3 h · golden hour priority",
+        "highlights": [
+          "Arrive 06:30 for the morning light and vendor set-up scenes.",
+          "Work the alley entrances, basket-laden vendors and textile rows for texture and color.",
+          "Save the back entrance for afternoon shade and candid people shots.",
+          "Cross the street for elevated wide frames of the market exterior and surrounding rooftops."
+        ]
+      },
+      {
+        "id": "accessible",
+        "icon": "♿",
+        "title": "Low-energy & Accessible",
+        "pace": "Very slow · ~2 h · fewer moves",
+        "highlights": [
+          "Arrange drop-off directly at the St.163 main gate (ramp access is available there).",
+          "Concentrate on the wide central aisles and ground-level food court, skip the narrow inner lanes.",
+          "Book a tuk-tuk or taxi back to avoid long walks in the heat.",
+          "Carry a foldable stool if standing time is limited."
+        ]
+      }
+    ],
+    "generalTitle": "Suggested General Itineraries",
+    "halfDay": {
+      "title": "Half Day (3–4 hours)",
+      "steps": [
+        "07:00 – Arrive, enter through the St.163 gate and explore the souvenirs & textile rows.",
+        "09:00 – Snack and cold drink break at the central food stalls.",
+        "09:45 – Walk the handicraft and jewelry sections, complete your souvenir purchases.",
+        "11:00 – Head out, arrange transport back to your hotel or next stop."
+      ]
+    },
+    "fullDay": {
+      "title": "Full Day (6–7 hours, with lunch)",
+      "steps": [
+        "07:00 – Morning arrival, photograph vendor setup & textile shopping.",
+        "09:30 – Coffee or breakfast at a nearby café, cool down.",
+        "10:30 – Explore handicrafts, antiques, accessories and souvenirs.",
+        "12:30 – Lunch at a local restaurant (choose a type of local Khmer eatery).",
+        "14:00 – Optional short walk around the surrounding local neighbourhood.",
+        "15:00 – Last round of shopping; wrap up and head out before closing."
+      ]
+    }
+  },
+  "visitorServices": {
+    "sectionEyebrow": "Visitor · Services & Facilities",
+    "sectionTitle": "Visitor Services & Nearby Facilities",
+    "intro": "Neutral overview of common facility types available around the market area. No specific businesses are recommended; select any reputable provider that meets your needs.",
+    "items": [
+      {
+        "icon": "🚻",
+        "type": "Public Toilets & Washrooms",
+        "detail": "Paid public restroom facilities of various hygiene standards can be found near the main entrances and inside the food court area. Carry small change and personal hand sanitizer."
+      },
+      {
+        "icon": "🅿️",
+        "type": "Parking",
+        "detail": "Street-side motorbike parking is available near the market gates; car parking options are limited in the immediate vicinity and are more common within a few hundred metres. Consider arriving by tuk-tuk or taxi to avoid parking difficulty."
+      },
+      {
+        "icon": "🍜",
+        "type": "Food & Dining",
+        "detail": "A wide range of dining options exists around and inside the market, including open-air food courts, local eateries, casual cafés and mid-range restaurants. Choose a style of cuisine and price level that matches your preference."
+      },
+      {
+        "icon": "🏨",
+        "type": "Accommodation & Lodging",
+        "detail": "Within the surrounding blocks there are guesthouses, budget hotels, mid-range hotels and serviced apartments of varying quality and price. Booking platforms and independent review sites can be used to compare options."
+      },
+      {
+        "icon": "🛒",
+        "type": "Supermarkets & Convenience Stores",
+        "detail": "Local mini-marts and medium-sized supermarkets are present within short walking distance of the main gates, suitable for drinks, snacks, toiletries and basic daily necessities."
+      },
+      {
+        "icon": "⛽",
+        "type": "Petrol Stations & EV Charging",
+        "detail": "Petrol stations with basic convenience services exist along major nearby roads. EV charging infrastructure availability varies and should be checked with your accommodation or local mapping services before travel."
+      },
+      {
+        "icon": "💵",
+        "type": "ATMs & Currency Exchange",
+        "detail": "Multiple bank branches and currency exchange booths are located on the surrounding arterial streets. US dollars and Cambodian riel are both widely accepted, though cash is preferred for small purchases."
+      },
+      {
+        "icon": "📶",
+        "type": "SIM / eSIM & Mobile Connectivity",
+        "detail": "Mobile operator shops and SIM card resellers are available nearby; prepaid data plans are inexpensive and recommended for mapping and translation while you shop."
+      }
+    ]
+  },
+  "scienceResponsibility": {
+    "sectionEyebrow": "E-E-A-T · Science & Visitor Responsibility",
+    "sectionTitle": "Science Background & Visitor Responsibility",
+    "intro": "A brief non-profit educational overview of the local setting and the responsible behaviours that help preserve it for local communities and future visitors.",
+    "background": {
+      "title": "Why this place matters — local context",
+      "body": [
+        "Toul Tompong Market sits within one of Phnom Penh's long-established residential neighbourhoods. Its commercial activity supports several thousand local livelihoods, from small stallholders to food preparers, porters and auxiliary workers, and it has operated as a daily community gathering point for multiple generations.",
+        "The building itself is a representative example of the mid-to-late 20th-century covered market architecture common across larger Cambodian towns: a concrete frame, open-sided ventilation suited to the tropical climate, and internal alley grids that allow both natural airflow and ease of movement for pedestrians and small deliveries.",
+        "Local climate and rainfall patterns — notably the southwest monsoon season from roughly June to October — shape the rhythm of the market: mornings are always busier and cooler, while wet afternoons favour the covered food court and indoor-style stalls over long exploratory walks."
+      ]
+    },
+    "legends": {
+      "title": "Historical memories & local stories",
+      "body": [
+        "Elderly local residents often recall that in the early post-war years the site was surrounded by unpaved lanes and small wooden houses, and that the covered market building itself replaced a much simpler open-air wet market and vegetable trading yard.",
+        "The affectionate nickname \"Russian Market\" entered common use during the 1980s, when a small but visible number of Russian-speaking expatriates, advisers and technicians lived and worked in the city and became frequent customers — not because the market sold Russian goods, but because it was widely known as the place where imported and hard-to-find products could be reliably found.",
+        "Today's local vendors are overwhelmingly the children and grandchildren of earlier generations of stallholders. Many still specialise in the same product categories their families offered decades ago, creating a quiet but tangible continuity of craft and trade knowledge."
+      ]
+    },
+    "responsibility": {
+      "title": "Visitor responsibility guidelines",
+      "items": [
+        "Respect the market as a working place, not only a photo backdrop: ask permission before photographing vendors at close range or their children.",
+        "Haggle politely and in good faith; a friendly smile is usually the only \"rule\". Do not negotiate unless you have a genuine intention to buy.",
+        "Carry out your own litter where bins are full; avoid leaving plastic bags, bottles or food packaging in the alleyways.",
+        "Dress modestly — covered shoulders and below-knee shorts or trousers are appropriate and appreciated in this family-focused community space.",
+        "Watch your belongings in crowded alleys and keep bags zipped. Report any problem to a visibly uniformed market warden or the nearest police box on the surrounding streets.",
+        "Support small local eateries and shops when possible; a large share of spending in the market goes directly to individual households in the neighbourhood."
+      ]
+    }
   }
 }

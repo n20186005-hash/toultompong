@@ -1,0 +1,14 @@
+# Configuration for Cloudflare Pages + Workers Functions
+# For initial setup:
+#   1) `npm run build`          (outputs ./dist + ./_worker.js or ./functions directory)
+#   2) `npx wrangler pages project create toul-tompong-market --production-branch main`
+#   3) `npm run deploy`         (build + wrangler deploy)
+
+name = "toul-tompong-market"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
+
+[vars]
+ENVIRONMENT = "production"
+SITE_NAME = "Toul Tompong Market Guide"

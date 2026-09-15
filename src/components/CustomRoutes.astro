@@ -1,0 +1,57 @@
+---
+import { ui } from '../i18n/ui';
+const { lang } = Astro.props;
+const t = ui(lang);
+---
+<section id="routes" class="bg-cream py-16">
+  <div class="mx-auto max-w-6xl px-4" data-reveal>
+    <div class="text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-gold">{t.customRoutes.sectionEyebrow}</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-brown md:text-4xl">{t.customRoutes.sectionTitle}</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-brown-light">{t.customRoutes.intro}</p>
+    </div>
+
+    <div class="mt-10 grid gap-5 lg:grid-cols-3">
+      {t.customRoutes.groups.map((g: any) => (
+        <article class="flex flex-col rounded-2xl border border-sand-dark bg-sand-light/40 p-6 shadow-sm">
+          <div class="flex items-start gap-3">
+            <span class="text-3xl">{g.icon}</span>
+            <div>
+              <h3 class="font-serif text-xl font-bold text-brown">{g.title}</h3>
+              <p class="mt-0.5 text-xs font-semibold text-gold-dark">{g.pace}</p>
+            </div>
+          </div>
+          <ol class="mt-4 space-y-2 list-decimal pl-5 text-sm leading-relaxed text-brown">
+            {g.highlights.map((h: string) => <li>{h}</li>)}
+          </ol>
+        </article>
+      ))}
+    </div>
+
+    <h3 class="mt-14 text-center font-serif text-2xl font-bold text-brown md:text-3xl">
+      {t.customRoutes.generalTitle}
+    </h3>
+
+    <div class="mt-8 grid gap-6 md:grid-cols-2">
+      <article class="rounded-2xl border border-sand-dark bg-sand-light/40 p-6 shadow-sm">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">⏱️</span>
+          <h4 class="font-serif text-xl font-bold text-brown">{t.customRoutes.halfDay.title}</h4>
+        </div>
+        <ol class="mt-4 space-y-2 list-decimal pl-5 text-sm leading-relaxed text-brown">
+          {t.customRoutes.halfDay.steps.map((s: string) => <li>{s}</li>)}
+        </ol>
+      </article>
+
+      <article class="rounded-2xl border border-sand-dark bg-sand-light/40 p-6 shadow-sm">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">🗺️</span>
+          <h4 class="font-serif text-xl font-bold text-brown">{t.customRoutes.fullDay.title}</h4>
+        </div>
+        <ol class="mt-4 space-y-2 list-decimal pl-5 text-sm leading-relaxed text-brown">
+          {t.customRoutes.fullDay.steps.map((s: string) => <li>{s}</li>)}
+        </ol>
+      </article>
+    </div>
+  </div>
+</section>
