@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TopicPage from '../../components/TopicPage.astro';
+import { BASE } from '../../config/site';
+
+const path = '/en/russian-market-opening-hours';
+const canonical = `${BASE}${path}`;
+---
+
+<BaseLayout lang="en" alternates={[{ code: 'en', href: canonical }]} alternateDefault={canonical}>
+  <TopicPage lang="en" topic="openingHours" />
+</BaseLayout>

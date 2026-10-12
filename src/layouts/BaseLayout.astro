@@ -9,32 +9,36 @@ interface Props {
   lang: string;
   /** Mark policy / legal pages as non-indexable. */
   noindex?: boolean;
+  /** Override the hreflang list (used by single-language topic pages). */
+  alternates?: { code: string; href: string }[];
+  /** Override the x-default target. */
+  alternateDefault?: string;
 }
-const { lang, noindex = false } = Astro.props;
+const { lang, noindex = false, alternates, alternateDefault } = Astro.props;
 const t = ui(lang);
 
 const htmlLang = lang === 'zh' ? 'zh-CN' : lang;
 
+// Site uses `trailingSlash: 'never'`, so canonical / hreflang URLs are emitted
+// WITHOUT a trailing slash to match the actual served routes.
 function withTrailing(url: string): string {
-  if (url.endsWith('/')) return url;
-  return url + '/';
+  return url.replace(/\/+$/, '');
 }
 
 const pagePathname = Astro.url.pathname; // e.g. /en /en/ /zh/privacy-policy
-// Normalize canonical with trailing slash.
 const canonical = withTrailing(
   pagePathname && pagePathname.length > 0 && pagePathname !== '/'
     ? `${BASE}${pagePathname}`
-    : `${BASE}/${lang}/`
+    : `${BASE}/${lang}`
 );
 
 // Hreflang + x-default (en as fallback, because GSC showed en as majority traffic)
-const locales = [
+const locales = alternates ?? [
   { code: 'km', href: withTrailing(`${BASE}/km`) },
   { code: 'zh', href: withTrailing(`${BASE}/zh`) },
   { code: 'en', href: withTrailing(`${BASE}/en`) },
 ];
-const hreflangDefault = withTrailing(`${BASE}/en`);
+const hreflangDefault = alternateDefault ?? withTrailing(`${BASE}/en`);
 
 const ogImage = withTrailing(`${BASE}${siteConfig.gallery[0]}`);
 const attractionFullName = 'Toul Tompong Market (Russian Market)';

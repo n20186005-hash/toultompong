@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "金邊俄羅斯市場 Toul Tompong Market 攻略｜營業時間、地址與購物指南",
-    "description": "造訪柬埔寨金邊俄羅斯市場 Toul Tompong Market（小偷市場 Phsar Tuol Tompong）？完整地址 163 街與 440 街交口、每日營業 06:00–16:30、必吃美食、紀念品殺價技巧與交通方式。",
+    "title": "金邊俄羅斯市場（Toul Tompong Market）攻略｜營業時間、地址、交通與購物指南",
+    "description": "探索柬埔寨金邊俄羅斯市場 Toul Tompong Market（小偷市場 Phsar Tuol Tompong）：完整地址、每日營業時間、必吃美食、紀念品採買、殺價技巧與從德崇機場出發的交通方式。",
     "keywords": "俄羅斯市場,金邊俄羅斯市場,Toul Tompong Market,小偷市場,Phsar Tuol Tompong,金邊景點,俄羅斯市場營業時間,俄羅斯市場地址,柬埔寨市場,金邊美食",
     "author": "toultompong.com — 非營利景點科普指南",
     "ogSiteTitle": "金邊俄羅斯市場（Toul Tompong / 小偷市場）遊玩攻略"
@@ -34,7 +34,7 @@
     "subtitle": "欢迎来到 Toul Tompong Market（俄罗斯市场），即广为人知的图尔通蓬市场核心地带。坐落于柬埔寨金边市中心，是到访该地区游客的主要目的地之一。金边最受欢迎的传统市场之一，体验当地购物、美食与城市生活文化。",
     "ctaMap": "查看地图",
     "ctaExplore": "游客指南",
-    "ratingSourceText": "评分与评价数同步自谷歌地图（Google Maps）用户评价 · 2026 年 9 月 ·",
+    "ratingSourceText": "评分与评价数同步自谷歌地图（Google Maps）用户评价 · 2026 年 10 月 ·",
     "ratingSourceLink": "点击查看谷歌地图全部评价"
   },
   "infoCards": {
@@ -52,7 +52,7 @@
     "hours": "每日 06:00 - 16:30",
     "phone": "+855 15 222 930",
     "ratingText": "4.1 / 5",
-    "reviews": "8,482 条评价"
+    "reviews": "8,503 条评价"
   },
   "intro": {
     "title": "关于 Toul Tompong Market",
@@ -106,13 +106,13 @@
     "title": "金边 Toul Tompong Market 位置与到访方式",
     "intro": "市场位于金边南部的图尔通蓬片区，距市中心与河滨约 15–20 分钟车程。以下是从机场与市区的常用路线。",
     "airport": {
-      "title": "从金边国际机场出发",
-      "desc": "金边国际机场（PNH）位于市区西北方，距市场约 11–13 公里。",
-      "taxiTitle": "出租车 / 网约车",
-      "taxiDesc": "在到达厅正规柜台购票，或使用 Grab、PassApp 叫车。路线：机场路 → 俄罗斯联邦大道（70 街）→ 莫尼旺大道向南 → 163 街与 440 街交口。车程约 30–45 分钟，车资约 12–15 美元。",
-      "tuktukTitle": "嘟嘟车",
-      "tuktukDesc": "车资约 8–12 美元，耗时 40–60 分钟，沿途可感受当地街景，适合不赶时间的旅客。",
-      "tip": "提示：请在机场到达厅内的正规柜台购票或叫车，避免场外被抬高报价。"
+      "title": "从德崇国际机场（KTI）出发",
+      "desc": "德崇国际机场（KTI）自 2025 年 9 月 9 日起取代金边国际机场（PNH）承接商业航班，位于市中心以南约 20 公里处，路程比旧机场更长。",
+      "taxiTitle": "出租车 / 网约车（Grab、PassApp）",
+      "taxiDesc": "在机场出租车站柜台购买固定价车票，或使用 Grab、PassApp 叫车。路线：机场高速 → 洪森大道 → 莫尼旺大桥 → 莫尼旺大道向南 → 163 街与 440 街交口。约 20 公里，车程 30–50 分钟，车资约 18–28 美元（以柜台为准）。",
+      "tuktukTitle": "机场快线巴士 + 嘟嘟车",
+      "tuktukDesc": "KTI 有往返金边市中心的机场快线巴士；在市区下客点换乘短途嘟嘟车或网约车前往市场（约 15 分钟）。快线票价较低（约 3–5 美元）另加市区接驳。出发前请在机场确认最新路线与票价。",
+      "tip": "提示：KTI 于 2025 年 9 月启用——请勿沿用旧 PNH 的距离、时间与价格。请务必在航站楼内正规柜台确认车资。"
     },
     "modes": [
       { "icon": "🛺", "title": "嘟嘟车（从市中心）", "desc": "从河滨（Sisowath Quay）沿 178 街 → 63 街 → 440 街向南，约 15–20 分钟，最具当地风味的方式。" },
@@ -131,11 +131,11 @@
   "reviews": {
     "title": "游客评价",
     "rating": "4.1 / 5",
-    "reviews": "8,482 条评价",
+    "reviews": "8,503 条评价",
     "source": "Google 评价",
-    "sourceLine1": "评分与评价数同步自谷歌地图（Google Maps）用户评价 · 2026 年 9 月 ·",
+    "sourceLine1": "评分与评价数同步自谷歌地图（Google Maps）用户评价 · 2026 年 10 月 ·",
     "sourceLink1": "点击查看谷歌地图全部评价",
-    "sourceAttribution": "同步自 Google 地图用户评价，同步时间 2026 年 9 月；版权归原作者与 Google 地图所有。",
+    "sourceAttribution": "同步自 Google 地图用户评价，同步时间 2026 年 10 月；版权归原作者与 Google 地图所有。",
     "viewAllButton": "在谷歌地图查看全部评价",
     "prosTitle": "游客喜欢",
     "pros": ["商品丰富多样", "真实体验当地生活", "适合购买纪念品"],
@@ -179,8 +179,8 @@
       { "q": "为什么叫俄罗斯市场？", "a": "这一别称源自 1980 年代，当时深受俄罗斯及其他外国游客欢迎。" },
       { "q": "该买些什么？", "a": "手工艺品、纪念品、服饰、珠宝与古董风格收藏品都很受欢迎。" },
       { "q": "什么时候去最好？", "a": "上午最佳，天气较凉爽且摊位货品最齐全。" },
-      { "q": "Toul Tompong Market 的评分是多少？", "a": "Toul Tompong Market 的评分为 4.1 / 5，基于 8,482 条谷歌地图用户评价，2026 年 9 月同步。" },
-      { "q": "从机场怎么去 Toul Tompong Market？", "a": "从金边国际机场出发，乘坐出租车或 Grab，经机场路 → 俄罗斯联邦大道（70 街）→ 莫尼旺大道向南 → 163 街与 440 街交口。车程约 30–45 分钟。" }
+      { "q": "Toul Tompong Market 的评分是多少？", "a": "Toul Tompong Market 的评分为 4.1 / 5，基于 8,503 条谷歌地图用户评价，2026 年 10 月同步。" },
+      { "q": "从机场怎么去 Toul Tompong Market？", "a": "从德崇国际机场（KTI）出发，乘坐出租车或 Grab/PassApp，经机场高速 → 洪森大道 → 莫尼旺大桥 → 莫尼旺大道向南 → 163 街与 440 街交口。车程约 30–50 分钟。" }
     ]
   },
   "amenities": {
@@ -246,8 +246,8 @@
     "items": [
       {
         "title": "Google 地图 — 评分与评价数据",
-        "meta": "评价 · 2026 年 9 月同步",
-        "desc": "同步自 Google 地图用户评价，同步时间 2026 年 9 月；版权归原作者与 Google 地图所有。",
+        "meta": "评价 · 2026 年 10 月同步",
+        "desc": "同步自 Google 地图用户评价，同步时间 2026 年 10 月；版权归原作者与 Google 地图所有。",
         "linkLabel": "在谷歌地图查看全部评价"
       },
       {
@@ -538,5 +538,15 @@
         "消费时请优先支持本地小食店与家庭摊位，市场内的消费中有相当大的比例直接回流到本社区的普通家庭。"
       ]
     }
+  },
+  "topicLinks": {
+    "title": "更多俄羅斯市場指南",
+    "subtitle": "聚焦的遊客指南，協助你規劃行程。",
+    "items": [
+      { "label": "營業時間", "href": "/en/russian-market-opening-hours" },
+      { "label": "實景照片", "href": "/en/russian-market-photos" },
+      { "label": "採買建議", "href": "/en/what-to-buy-russian-market" },
+      { "label": "交通方式", "href": "/en/russian-market-directions" }
+    ]
   }
 }
