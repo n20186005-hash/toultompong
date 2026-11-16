@@ -13,8 +13,10 @@ interface Props {
   alternates?: { code: string; href: string }[];
   /** Override the x-default target. */
   alternateDefault?: string;
+  seoTitle?: string;
+  seoDescription?: string;
 }
-const { lang, noindex = false, alternates, alternateDefault } = Astro.props;
+const { lang, noindex = false, alternates, alternateDefault, seoTitle, seoDescription } = Astro.props;
 const t = ui(lang);
 
 const htmlLang = lang === 'zh' ? 'zh-CN' : lang;
@@ -183,8 +185,8 @@ const breadcrumbJsonLd = {
   ],
 };
 
-const ogTitle = t.meta.title;
-const ogDesc  = t.meta.description;
+const ogTitle = seoTitle ?? t.meta.title;
+const ogDesc  = seoDescription ?? t.meta.description;
 ---
 <!doctype html>
 <html lang={htmlLang}>
@@ -195,8 +197,8 @@ const ogDesc  = t.meta.description;
     {!noindex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-    <title>{t.meta.title}</title>
-    <meta name="description" content={t.meta.description} />
+    <title>{ogTitle}</title>
+    <meta name="description" content={ogDesc} />
     <meta name="keywords" content={t.meta.keywords} />
     <meta name="author" content={t.meta.author} />
     <link rel="canonical" href={canonical} />

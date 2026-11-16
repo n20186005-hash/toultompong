@@ -16,7 +16,7 @@ const navEntries = Object.entries(t.header.nav) as [string, string][];
 
     <nav class="hidden md:flex items-center gap-5 text-sm">
       {navEntries.map(([key, label]) => (
-        <a href={`#${key}`} class="text-cream/85 hover:text-gold transition">{label}</a>
+        <a href={`${homeHref}#${key}`} class="text-cream/85 hover:text-gold transition">{label}</a>
       ))}
     </nav>
 
@@ -26,7 +26,7 @@ const navEntries = Object.entries(t.header.nav) as [string, string][];
         <summary class="flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-lg border border-cream/30 text-xl">☰</summary>
         <nav class="absolute right-0 mt-2 w-48 rounded-lg bg-brown p-3 shadow-xl flex flex-col gap-1">
           {navEntries.map(([key, label]) => (
-            <a href={`#${key}`} class="rounded px-3 py-2 text-sm text-cream/90 hover:bg-brown-light">{label}</a>
+            <a href={`${homeHref}#${key}`} class="rounded px-3 py-2 text-sm text-cream/90 hover:bg-brown-light">{label}</a>
           ))}
         </nav>
       </details>
