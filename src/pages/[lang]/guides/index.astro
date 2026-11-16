@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { guides } from '../../../data/guides';
+import { guideLocales } from '../../../data/guideLocales';
+import { BASE } from '../../../config/site';
+export const prerender = true;
+export function getStaticPaths(){return ['en','zh','km'].map(lang=>({params:{lang}}));}
+const {lang} = Astro.params;
+const copy = {
+  en: {title:'Russian Market visitor guides',description:'Explore shopping, food, transport, history and neighbourhood guides for Toul Tompong Market in Phnom Penh.',back:'Russian Market overview',read:'Read guide'},
+  zh: {title:'俄罗斯市场专题旅游指南',description:'阅读金边图尔通蓬市场购物、美食、交通、历史和周边游览的中文指南。',back:'返回俄罗斯市场首页',read:'阅读指南'},
+  km: {title:'មគ្គុទ្ទេសក៍ទស្សនាផ្សារទួលទំពូង',description:'ស្វែងយល់ពីការទិញទំនិញ អាហារ ការធ្វើដំណើរ ប្រវត្តិ និងតំបន់ជុំវិញផ្សារទួលទំពូងនៅភ្នំពេញ។',back:'ត្រឡប់ទៅទំព័រផ្សារ',read:'អានបន្ត'},
+}[lang as 'en'|'zh'|'km'];
+const alternates = ['en','zh','km'].map(code=>({code,href:`${BASE}/${code}/guides`}));
+---
+<BaseLayout lang={lang!} seoTitle={`${copy.title} | Toul Tompong Market`} seoDescription={copy.description} alternates={alternates} alternateDefault={`${BASE}/en/guides`}>
+  <section class="mx-auto max-w-6xl px-4 py-12" data-reveal><a href={`/${lang}`} class="text-sm text-amber-800 hover:underline">← {copy.back}</a><h1 class="mt-5 font-serif text-3xl font-bold sm:text-4xl">{copy.title}</h1><p class="mt-4 max-w-3xl leading-7 text-stone-700">{copy.description}</p><div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{guides.map((guide,i)=> {const item=lang==='en'?{title:guide.title,lead:guide.description}:guideLocales[lang as 'zh'|'km'][i];return <a href={`/${lang}/guides/${guide.slug}`} class="rounded-2xl border border-stone-200 bg-white p-6 transition hover:border-amber-500 hover:shadow"><h2 class="font-serif text-xl font-semibold">{item.title}</h2><p class="mt-3 text-sm leading-6 text-stone-600">{'lead' in item?item.lead:''}</p><span class="mt-4 inline-block text-amber-800">{copy.read} →</span></a>})}</div></section>
+</BaseLayout>
