@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { BASE } from '../../../config/site';
+import { nearbyPlaces } from '../../../data/nearbyPlaces';
+export const prerender=true;
+export function getStaticPaths(){return ['en','zh','km'].map(lang=>({params:{lang}}));}
+const {lang}=Astro.params;
+const title=lang==='zh'?'探索俄罗斯市场周边景点':lang==='km'?'ស្វែងយល់កន្លែងទស្សនាជុំវិញផ្សារទួលទំពូង':'Explore Places Beyond Russian Market';
+const desc=lang==='zh'?'从金边俄罗斯市场延伸游览独立文化与建筑景点，每个地点有自己的历史、交通与地图。':lang==='km'?'ស្វែងយល់ពីទីតាំងប្រវត្តិសាស្ត្រ និងស្ថាបត្យកម្មនៅភ្នំពេញ ដែលមានផែនទីផ្ទាល់ខ្លួន។':'Independent Phnom Penh attractions with their own history, directions, visitor information and maps.';
+const alternates=['en','zh','km'].map(code=>({code,href:`${BASE}/${code}/nearby`}));
+---
+<BaseLayout lang={lang!} seoTitle={`${title} | Toul Tompong Market`} seoDescription={desc} alternates={alternates} alternateDefault={`${BASE}/en/nearby`}>
+  <section class="mx-auto max-w-6xl px-4 py-12"><a class="text-amber-800" href={`/${lang}#nearby`}>← {lang==='zh'?'返回首页':lang==='km'?'ត្រឡប់ទៅទំព័រដើម':'Back to market overview'}</a><h1 class="mt-5 font-serif text-3xl font-bold">{title}</h1><p class="mt-4 max-w-3xl leading-7">{desc}</p><div class="mt-9 grid gap-6 sm:grid-cols-2">{nearbyPlaces.map(p=><a href={`/${lang}/nearby/${p.slug}`} class="overflow-hidden rounded-2xl border border-stone-200 bg-white hover:shadow"><img src={p.photo} alt={p[lang as 'en'|'zh'|'km'].name} loading="lazy" class="h-56 w-full object-cover"/><div class="p-6"><h2 class="font-serif text-xl font-bold">{p[lang as 'en'|'zh'|'km'].name}</h2><p class="mt-2 text-stone-600">{p[lang as 'en'|'zh'|'km'].tagline}</p></div></a>)}</div></section>
+</BaseLayout>

@@ -3,8 +3,8 @@ import { languagesList, base } from '../i18n/ui';
 const { lang } = Astro.props;
 const labels: Record<string, string> = { km: 'ខ្មែរ', en: 'English', zh: '中文' };
 const currentPath = Astro.url.pathname;
-const guideSuffix = currentPath.match(/^\/(?:en|zh|km)(\/guides(?:\/[^/]+)?)(?:\/)?$/)?.[1];
-const hrefFor = (l: string) => guideSuffix ? `${base}/${l}${guideSuffix}` : `${base}/${l}`;
+const localizedSuffix = currentPath.match(/^\/(?:en|zh|km)(\/(?:guides|nearby)(?:\/[^/]+)?)(?:\/)?$/)?.[1];
+const hrefFor = (l: string) => localizedSuffix ? `${base}/${l}${localizedSuffix}` : `${base}/${l}`;
 ---
 <div class="relative">
   <details class="relative">

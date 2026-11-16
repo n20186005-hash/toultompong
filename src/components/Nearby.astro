@@ -1,5 +1,6 @@
 ---
 import { ui } from '../i18n/ui';
+import { nearbyPlaces } from '../data/nearbyPlaces';
 const { lang } = Astro.props;
 const t = ui(lang);
 ---
@@ -19,5 +20,9 @@ const t = ui(lang);
         </div>
       ))}
     </div>
+    <div class="mt-9 grid gap-6 md:grid-cols-2">
+      {nearbyPlaces.map((place) => <a href={`/${lang}/nearby/${place.slug}`} class="group overflow-hidden rounded-2xl border border-sand-dark bg-white shadow-sm transition hover:shadow-lg"><img src={place.photo} alt={place[lang as 'en'|'zh'|'km'].name} loading="lazy" class="h-48 w-full object-cover"/><div class="p-6"><h3 class="font-serif text-xl font-bold text-brown">{place[lang as 'en'|'zh'|'km'].name}</h3><p class="mt-2 text-brown-light">{place[lang as 'en'|'zh'|'km'].tagline}</p><span class="mt-4 inline-block font-semibold text-amber-800">{lang==='zh'?'查看独立景点页':lang==='km'?'មើលទំព័រទីតាំង':'Read the attraction guide'} →</span></div></a>)}
+    </div>
+    <a href={`/${lang}/nearby`} class="mt-7 inline-block rounded-xl border border-amber-300 bg-amber-50 px-5 py-3 font-semibold text-amber-900">{lang==='zh'?'探索全部周边景点':lang==='km'?'មើលទីតាំងជុំវិញទាំងអស់':'Explore all nearby attractions'} →</a>
   </div>
 </section>
