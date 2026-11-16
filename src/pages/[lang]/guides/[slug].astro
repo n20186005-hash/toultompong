@@ -24,12 +24,21 @@ const copy = {
   km: { home:'ផ្សារទួលទំពូង', guides:'មគ្គុទ្ទេសក៍', label:'ភ្នំពេញ · មគ្គុទ្ទេសក៍អ្នកទស្សនា', map:'បើកផែនទីផ្សារទួលទំពូង', plan:'ការរៀបចំដំណើរ', planText:'ម៉ោង និងមុខទំនិញអាចខុសគ្នាតាមតូប។ ជាទូទៅការចូលផ្សារមិនបង់ថ្លៃ ប៉ុន្តែការទិញទំនិញ និងអាហារត្រូវបង់ប្រាក់។ សូមផ្ទៀងផ្ទាត់នៅទីតាំង។', about:'អំពីផ្សារ និងការគ្រប់គ្រង', aboutText:'ផ្សារទួលទំពូងជាផ្សារប្រពៃណីក្នុងរាជធានីភ្នំពេញដែលមានអាជីវករឯករាជ្យជាច្រើន។ មិនគួរអះអាងពីស្ថាប័នគ្រប់គ្រងទេសចរណ៍ដោយគ្មានប្រភពច្បាស់លាស់។', highlights:'ចំណុចសំខាន់ និងដំបូន្មាន', route:'លំដាប់ទស្សនាដែលណែនាំ', basics:'ព័ត៌មានមូលដ្ឋាន', location:'អាសយដ្ឋាន', hours:'ម៉ោងបើក', hoursValue:'ព័ត៌មានទូទៅបង្ហាញ ០៦:០០–១៦:៣០ ប៉ុន្តែម៉ោងតូបនីមួយៗត្រូវពិនិត្យនៅទីតាំង។', ticket:'ថ្លៃចូល', ticketValue:'ជាទូទៅចូលមើលដោយឥតគិតថ្លៃ; ទំនិញ និងអាហារគិតថ្លៃដោយឡែក។', transport:'មធ្យោបាយធ្វើដំណើរ', transportValue:'តុកតុក តាក់ស៊ី ឬមធ្យោបាយសមស្របផ្សេងទៀត; បញ្ជាក់តម្លៃ និងគោលដៅជាមុន។', faq:'សំណួរញឹកញាប់', q1:'តើទីនេះជាផ្សារធំថ្មីដែរឬទេ?', a1:'ទេ។ ផ្សារទួលទំពូង និងផ្សារធំថ្មីស្ថិតនៅទីតាំងផ្សេងគ្នាក្នុងភ្នំពេញ។', q2:'តើតូបទាំងអស់បើកម៉ោងដូចគ្នាឬទេ?', a2:'ទេ។ អាជីវករនីមួយៗអាចមានម៉ោងខុសគ្នា។', photos:'រូបភាពពិត និងចំណុចសង្កេត', photoText:'ច្រកផ្សារដែលមានដំបូល និងផ្លូវជុំវិញជាកន្លែងសង្កេតជីវភាពផ្សារ។ សុំការអនុញ្ញាតមុនថតមនុស្ស។', lodging:'ការជ្រើសកន្លែងស្នាក់នៅ', lodgingText:'ជ្រើសសណ្ឋាគារតាមកម្មវិធីទស្សនាភ្នំពេញ និងការធ្វើដំណើរ; ពិនិត្យតម្លៃ និងសេវាដោយផ្ទាល់។', reviews:'មតិអ្នកទស្សនា', reviewsText:'សូមមើលពិន្ទុ និងចំនួនមតិបច្ចុប្បន្ននៅទំព័រ Google Maps របស់ផ្សារនេះ។', sources:'ប្រភពព័ត៌មាន និងទីតាំង', updated:'កែសម្រួល ១៦ វិច្ឆិកា ២០២៦។ ព័ត៌មានប្រតិបត្តិការអាចផ្លាស់ប្តូរ សូមពិនិត្យនៅទីតាំង។', more:'មគ្គុទ្ទេសក៍ពាក់ព័ន្ធ', all:'មើលមគ្គុទ្ទេសក៍ទាំងអស់', steps:['ចូលតាមច្រកផ្លូវ និងចងចាំទីតាំង។','មើលតូបតាមចំណាប់អារម្មណ៍ដោយមិនប្រញាប់។','ពិនិត្យតម្លៃ ទំនិញ និងស្ថានភាពថ្ងៃនោះ។','ត្រឡប់ទៅកន្លែងទទួលយានជំនិះនៅខាងក្រៅ។'] },
 }[lang as 'en'|'zh'|'km'];
 const sections = localized ? localized.points.map((body:string,i:number)=>({heading:[copy.highlights,copy.plan,copy.transport][i],body})) : guide.sections;
-const faq = localized ? [{q:copy.q1,a:copy.a1},{q:copy.q2,a:copy.a2}] : guide.faq;
-const steps = localized ? copy.steps : guide.steps;
+const faq = localized ? [
+  {q:lang==='zh'?`${title}有哪些重要事项？`:`តើគួរយល់អ្វីខ្លះអំពី ${title}?`,a:localized.points[0]},
+  {q:lang==='zh'?'游览前还需要考虑什么？':'តើត្រូវត្រៀមអ្វីបន្ថែមមុនទៅទស្សនា?',a:`${localized.points[1]} ${localized.points[2]}`},
+] : guide.faq;
+const steps = localized ? [copy.steps[0],...localized.points] : guide.steps;
 const article = { '@context':'https://schema.org','@type':'Article', headline:title,description:lead,inLanguage:lang,mainEntityOfPage:canonical,dateModified:'2026-11-16',about:{'@id':`${BASE}/#attraction`} };
 // Curated from the existing 18 photographed market scenes; no published asset is changed.
-const photoByTopic = [14,7,2,8,14,12,5,13,17,18,3,16,17,12,5,2,1,18,1,12,17,5,18,10,4,2,13,3,12,8];
-const photo = siteConfig.gallery[photoByTopic[index]-1];
+const photoByTopic = [14,7,2,8,14,12,5,13,17,18,3,16,17,12,5,2,1,18,1,12,17,5,18,10,4,2,13,3,12,8,10];
+const newPhotos: Record<number,string> = {
+  12:'/gallery/russian-market-wikimedia-11.jpg', // named market entrance
+  13:'/gallery/russian-market-wikimedia-04.jpg', // shopping aisle
+  16:'/gallery/russian-market-wikimedia-09.jpg', // busy market exterior
+  25:'/gallery/russian-market-wikimedia-03.jpg', // local spare-parts merchandise
+};
+const photo = newPhotos[index] ?? siteConfig.gallery[photoByTopic[index]-1];
 const separatePlaces: Record<string,{name:string;query:string}[]> = {
   'russian-market-vs-central-market': [{name:'Central Market (Phsar Thmei)',query:'Central Market Phnom Penh Cambodia'}],
   'russian-market-nearby-places': [{name:'Tuol Sleng Genocide Museum',query:'Tuol Sleng Genocide Museum Phnom Penh Cambodia'}],
