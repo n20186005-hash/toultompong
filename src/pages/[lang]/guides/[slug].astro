@@ -30,15 +30,42 @@ const faq = localized ? [
 ] : guide.faq;
 const steps = localized ? [copy.steps[0],...localized.points] : guide.steps;
 const article = { '@context':'https://schema.org','@type':'Article', headline:title,description:lead,inLanguage:lang,mainEntityOfPage:canonical,dateModified:'2026-11-16',about:{'@id':`${BASE}/#attraction`} };
-// Curated from the existing 18 photographed market scenes; no published asset is changed.
-const photoByTopic = [14,7,2,8,14,12,5,13,17,18,3,16,17,12,5,2,1,18,1,12,17,5,18,10,4,2,13,3,12,8,10];
-const newPhotos: Record<number,string> = {
-  12:'/gallery/russian-market-wikimedia-11.jpg', // named market entrance
-  13:'/gallery/russian-market-wikimedia-04.jpg', // shopping aisle
-  16:'/gallery/russian-market-wikimedia-09.jpg', // busy market exterior
-  25:'/gallery/russian-market-wikimedia-03.jpg', // local spare-parts merchandise
-};
-const photo = newPhotos[index] ?? siteConfig.gallery[photoByTopic[index]-1];
+// One distinct market photograph per guide; previously published gallery assets remain intact.
+// Images are selected for each topic's subject where a matching scene is available.
+const topicPhotos = [
+  '/gallery/toul-tompong-market-14.jpg',
+  '/gallery/toul-tompong-market-7.jpg',
+  '/gallery/russian-market-produce.webp',
+  '/gallery/russian-market-souvenirs.jpg',
+  '/gallery/russian-market-textiles.jpg',
+  '/gallery/toul-tompong-market-12.jpg',
+  '/gallery/toul-tompong-market-5.jpg',
+  '/gallery/toul-tompong-market-13.jpg',
+  '/gallery/toul-tompong-market-17.jpg',
+  '/gallery/toul-tompong-market-18.jpg',
+  '/gallery/toul-tompong-market-3.jpg',
+  '/gallery/toul-tompong-market-16.jpg',
+  '/gallery/russian-market-wikimedia-11.jpg',
+  '/gallery/russian-market-wikimedia-04.jpg',
+  '/gallery/toul-tompong-market-15.jpg',
+  '/gallery/toul-tompong-market-2.jpg',
+  '/gallery/russian-market-wikimedia-09.jpg',
+  '/gallery/toul-tompong-market-1.jpg',
+  '/gallery/toul-tompong-market-11.jpg',
+  '/gallery/toul-tompong-market-6.jpg',
+  '/gallery/russian-market-entrance.jpg',
+  '/gallery/toul-tompong-market-9.jpg',
+  '/gallery/toul-tompong-market-8.jpg',
+  '/gallery/russian-market-clothes.jpg',
+  '/gallery/toul-tompong-market-4.jpg',
+  '/gallery/russian-market-wikimedia-03.jpg',
+  '/gallery/toul-tompong-market-10.jpg',
+  '/gallery/russian-market-trinkets.jpg',
+  '/gallery/russian-market-street-food.jpg',
+  '/gallery/russian-market-dried-food.webp',
+  '/gallery/russian-market-bags.jpg',
+];
+const photo = topicPhotos[index];
 const separatePlaces: Record<string,{name:string;query:string}[]> = {
   'russian-market-vs-central-market': [{name:'Central Market (Phsar Thmei)',query:'Central Market Phnom Penh Cambodia'}],
   'russian-market-nearby-places': [{name:'Tuol Sleng Genocide Museum',query:'Tuol Sleng Genocide Museum Phnom Penh Cambodia'}],
