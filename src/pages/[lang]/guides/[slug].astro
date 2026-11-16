@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { guides } from '../../../data/guides';
 import { guideLocales } from '../../../data/guideLocales';
 import { guideFaqLocales } from '../../../data/guideFaqLocales';
+import { guideRoutesLocales } from '../../../data/guideRoutesLocales';
 import { siteConfig, BASE } from '../../../config/site';
 export const prerender = true;
 
@@ -26,7 +27,7 @@ const copy = {
 }[lang as 'en'|'zh'|'km'];
 const sections = localized ? localized.points.map((body:string,i:number)=>({heading:[copy.highlights,copy.plan,copy.transport][i],body})) : guide.sections;
 const faq = localized ? guideFaqLocales[lang as 'zh'|'km'][index].map(([q,a])=>({q,a})) : guide.faq;
-const steps = localized ? [copy.steps[0],...localized.points] : guide.steps;
+const steps = localized ? guideRoutesLocales[lang as 'zh'|'km'][index] : guide.steps;
 const article = { '@context':'https://schema.org','@type':'Article', headline:title,description:lead,inLanguage:lang,mainEntityOfPage:canonical,dateModified:'2026-11-16',about:{'@id':`${BASE}/#attraction`} };
 // One distinct market photograph per guide; previously published gallery assets remain intact.
 // Images are selected for each topic's subject where a matching scene is available.
